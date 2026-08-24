@@ -1506,10 +1506,8 @@
 // 各コード: { frets: [4弦G,3弦C,2弦E,1弦A], fingers: [同順], baseFret: 1, label: "ポジション名" }
 // frets: -1=ミュート, 0=開放弦, 1以上=フレット番号(baseFret基準の相対値)
 // fingers: 0=なし, 1=人差し指, 2=中指, 3=薬指, 4=小指
-//
-// 【フェーズ1・暫定データ】major / m / 7 の36フォームのみ収録。
-// 残り9タイプ（maj7 / m7 / dim / m7b5 / aug / sus4 / 7sus4 / 6 / add9）×12ルート＝108フォームは
-// フェーズ2で参照表と1個ずつ突き合わせて追加する。
+// 全12タイプ×12ルート＝144フォーム。全フォームの構成音は機械照合済み（verify_uk2.js）。
+// ハイポジションは baseFret で表示窓を狭くし、相対フレットは1〜4に収めている。
 
 const CHORDS = {
   "C": {
@@ -1521,6 +1519,33 @@ const CHORDS = {
     ],
     "7": [
       { label: "ローコード", frets: [0, 0, 0, 1], fingers: [0, 0, 0, 1], baseFret: 1 }
+    ],
+    "maj7": [
+      { label: "ローコード", frets: [0, 0, 0, 2], fingers: [0, 0, 0, 2], baseFret: 1 }
+    ],
+    "m7": [
+      { label: "ハイポジション", frets: [1, 1, 1, 1], fingers: [1, 1, 1, 1], baseFret: 3 }
+    ],
+    "dim": [
+      { label: "ローコード", frets: [2, 3, 2, 3], fingers: [1, 3, 2, 4], baseFret: 1 }
+    ],
+    "m7b5": [
+      { label: "ローコード", frets: [3, 3, 2, 3], fingers: [2, 3, 1, 4], baseFret: 1 }
+    ],
+    "aug": [
+      { label: "ローコード", frets: [1, 0, 0, 3], fingers: [1, 0, 0, 3], baseFret: 1 }
+    ],
+    "sus4": [
+      { label: "ローコード", frets: [0, 0, 1, 3], fingers: [0, 0, 1, 3], baseFret: 1 }
+    ],
+    "7sus4": [
+      { label: "バレーコード", frets: [0, 0, 1, 1], fingers: [0, 0, 1, 1], baseFret: 1 }
+    ],
+    "6": [
+      { label: "ローコード", frets: [0, 0, 0, 0], fingers: [0, 0, 0, 0], baseFret: 1 }
+    ],
+    "add9": [
+      { label: "ローコード", frets: [0, 2, 0, 3], fingers: [0, 2, 0, 3], baseFret: 1 }
     ]
   },
   "C#": {
@@ -1528,10 +1553,37 @@ const CHORDS = {
       { label: "バレーコード", frets: [1, 1, 1, 4], fingers: [1, 1, 1, 4], baseFret: 1 }
     ],
     "m": [
-      { label: "ローコード", frets: [1, 1, 0, 4], fingers: [1, 1, 0, 4], baseFret: 1 }
+      { label: "バレーコード", frets: [1, 1, 0, 4], fingers: [1, 1, 0, 4], baseFret: 1 }
     ],
     "7": [
       { label: "バレーコード", frets: [1, 1, 1, 2], fingers: [1, 1, 1, 2], baseFret: 1 }
+    ],
+    "maj7": [
+      { label: "バレーコード", frets: [1, 1, 1, 3], fingers: [1, 1, 1, 3], baseFret: 1 }
+    ],
+    "m7": [
+      { label: "バレーコード", frets: [1, 1, 0, 2], fingers: [1, 1, 0, 2], baseFret: 1 }
+    ],
+    "dim": [
+      { label: "ローコード", frets: [0, 1, 0, 1], fingers: [0, 1, 0, 2], baseFret: 1 }
+    ],
+    "m7b5": [
+      { label: "ローコード", frets: [0, 1, 0, 2], fingers: [0, 1, 0, 2], baseFret: 1 }
+    ],
+    "aug": [
+      { label: "バレーコード", frets: [2, 1, 1, 0], fingers: [2, 1, 1, 0], baseFret: 1 }
+    ],
+    "sus4": [
+      { label: "バレーコード", frets: [1, 1, 2, 4], fingers: [1, 1, 2, 4], baseFret: 1 }
+    ],
+    "7sus4": [
+      { label: "バレーコード", frets: [1, 1, 2, 2], fingers: [1, 1, 2, 2], baseFret: 1 }
+    ],
+    "6": [
+      { label: "バレーコード", frets: [1, 1, 1, 1], fingers: [1, 1, 1, 1], baseFret: 1 }
+    ],
+    "add9": [
+      { label: "ローコード", frets: [1, 3, 1, 4], fingers: [1, 3, 2, 4], baseFret: 1 }
     ]
   },
   "D": {
@@ -1542,29 +1594,110 @@ const CHORDS = {
       { label: "ローコード", frets: [2, 2, 1, 0], fingers: [2, 3, 1, 0], baseFret: 1 }
     ],
     "7": [
-      { label: "バレーコード", frets: [2, 2, 2, 3], fingers: [1, 1, 1, 3], baseFret: 1 }
+      { label: "バレーコード", frets: [2, 2, 2, 3], fingers: [1, 1, 1, 2], baseFret: 1 }
+    ],
+    "maj7": [
+      { label: "バレーコード", frets: [2, 2, 2, 4], fingers: [1, 1, 1, 3], baseFret: 1 }
+    ],
+    "m7": [
+      { label: "ローコード", frets: [2, 2, 1, 3], fingers: [2, 3, 1, 4], baseFret: 1 }
+    ],
+    "dim": [
+      { label: "ローコード", frets: [1, 2, 1, 2], fingers: [1, 3, 2, 4], baseFret: 1 }
+    ],
+    "m7b5": [
+      { label: "ローコード", frets: [1, 2, 1, 3], fingers: [1, 3, 2, 4], baseFret: 1 }
+    ],
+    "aug": [
+      { label: "ローコード", frets: [3, 2, 2, 1], fingers: [3, 2, 2, 1], baseFret: 1 }
+    ],
+    "sus4": [
+      { label: "ローコード", frets: [0, 2, 3, 0], fingers: [0, 2, 3, 0], baseFret: 1 }
+    ],
+    "7sus4": [
+      { label: "バレーコード", frets: [2, 2, 3, 3], fingers: [1, 1, 2, 3], baseFret: 1 }
+    ],
+    "6": [
+      { label: "バレーコード", frets: [2, 2, 2, 2], fingers: [1, 1, 1, 1], baseFret: 1 }
+    ],
+    "add9": [
+      { label: "ハイポジション", frets: [1, 3, 1, 4], fingers: [1, 3, 2, 4], baseFret: 2 }
     ]
   },
   "D#": {
     "major": [
-      { label: "バレーコード", frets: [3, 3, 3, 1], fingers: [2, 3, 4, 1], baseFret: 1 }
+      { label: "ローコード", frets: [3, 3, 3, 1], fingers: [2, 3, 4, 1], baseFret: 1 }
     ],
     "m": [
-      { label: "バレーコード", frets: [3, 3, 2, 1], fingers: [3, 4, 2, 1], baseFret: 1 }
+      { label: "ローコード", frets: [3, 3, 2, 1], fingers: [3, 4, 2, 1], baseFret: 1 }
     ],
     "7": [
-      { label: "バレーコード", frets: [3, 3, 3, 4], fingers: [1, 1, 1, 3], baseFret: 1 }
+      { label: "バレーコード", frets: [3, 3, 3, 4], fingers: [1, 1, 1, 2], baseFret: 1 }
+    ],
+    "maj7": [
+      { label: "ハイポジション", frets: [1, 1, 1, 3], fingers: [1, 1, 1, 3], baseFret: 3 }
+    ],
+    "m7": [
+      { label: "ローコード", frets: [3, 3, 2, 4], fingers: [2, 3, 1, 4], baseFret: 1 }
+    ],
+    "dim": [
+      { label: "ローコード", frets: [2, 3, 2, 3], fingers: [1, 3, 2, 4], baseFret: 1 }
+    ],
+    "m7b5": [
+      { label: "ローコード", frets: [2, 3, 2, 4], fingers: [1, 3, 2, 4], baseFret: 1 }
+    ],
+    "aug": [
+      { label: "ローコード", frets: [0, 3, 3, 2], fingers: [0, 2, 3, 1], baseFret: 1 }
+    ],
+    "sus4": [
+      { label: "バレーコード", frets: [1, 3, 4, 1], fingers: [1, 2, 3, 1], baseFret: 1 }
+    ],
+    "7sus4": [
+      { label: "バレーコード", frets: [3, 3, 4, 4], fingers: [1, 1, 2, 3], baseFret: 1 }
+    ],
+    "6": [
+      { label: "バレーコード", frets: [3, 3, 3, 3], fingers: [1, 1, 1, 1], baseFret: 1 }
+    ],
+    "add9": [
+      { label: "バレーコード", frets: [0, 3, 1, 1], fingers: [0, 3, 1, 1], baseFret: 1 }
     ]
   },
   "E": {
     "major": [
-      { label: "バレーコード", frets: [4, 4, 4, 2], fingers: [2, 3, 4, 1], baseFret: 1 }
+      { label: "ローコード", frets: [4, 4, 4, 2], fingers: [2, 3, 4, 1], baseFret: 1 }
     ],
     "m": [
       { label: "ローコード", frets: [0, 4, 3, 2], fingers: [0, 4, 3, 2], baseFret: 1 }
     ],
     "7": [
       { label: "ローコード", frets: [1, 2, 0, 2], fingers: [1, 2, 0, 3], baseFret: 1 }
+    ],
+    "maj7": [
+      { label: "ローコード", frets: [1, 3, 0, 2], fingers: [1, 3, 0, 2], baseFret: 1 }
+    ],
+    "m7": [
+      { label: "ローコード", frets: [0, 2, 0, 2], fingers: [0, 1, 0, 2], baseFret: 1 }
+    ],
+    "dim": [
+      { label: "ローコード", frets: [0, 1, 0, 1], fingers: [0, 1, 0, 2], baseFret: 1 }
+    ],
+    "m7b5": [
+      { label: "ローコード", frets: [0, 2, 0, 1], fingers: [0, 2, 0, 1], baseFret: 1 }
+    ],
+    "aug": [
+      { label: "ローコード", frets: [1, 0, 0, 3], fingers: [1, 0, 0, 3], baseFret: 1 }
+    ],
+    "sus4": [
+      { label: "ローコード", frets: [2, 4, 0, 2], fingers: [1, 4, 0, 2], baseFret: 1 }
+    ],
+    "7sus4": [
+      { label: "ローコード", frets: [2, 2, 0, 2], fingers: [1, 2, 0, 3], baseFret: 1 }
+    ],
+    "6": [
+      { label: "ハイポジション", frets: [1, 1, 1, 1], fingers: [1, 1, 1, 1], baseFret: 4 }
+    ],
+    "add9": [
+      { label: "ローコード", frets: [1, 4, 2, 2], fingers: [1, 4, 2, 3], baseFret: 1 }
     ]
   },
   "F": {
@@ -1572,21 +1705,75 @@ const CHORDS = {
       { label: "ローコード", frets: [2, 0, 1, 0], fingers: [2, 0, 1, 0], baseFret: 1 }
     ],
     "m": [
-      { label: "ローコード", frets: [1, 0, 1, 3], fingers: [1, 0, 1, 3], baseFret: 1 }
+      { label: "ローコード", frets: [1, 0, 1, 3], fingers: [1, 0, 2, 4], baseFret: 1 }
     ],
     "7": [
       { label: "ローコード", frets: [2, 3, 1, 0], fingers: [2, 3, 1, 0], baseFret: 1 }
+    ],
+    "maj7": [
+      { label: "ローコード", frets: [2, 4, 1, 0], fingers: [2, 4, 1, 0], baseFret: 1 }
+    ],
+    "m7": [
+      { label: "ローコード", frets: [1, 3, 1, 3], fingers: [1, 3, 2, 4], baseFret: 1 }
+    ],
+    "dim": [
+      { label: "ローコード", frets: [1, 2, 1, 2], fingers: [1, 3, 2, 4], baseFret: 1 }
+    ],
+    "m7b5": [
+      { label: "ローコード", frets: [1, 3, 1, 2], fingers: [1, 4, 2, 3], baseFret: 1 }
+    ],
+    "aug": [
+      { label: "バレーコード", frets: [2, 1, 1, 0], fingers: [2, 1, 1, 0], baseFret: 1 }
+    ],
+    "sus4": [
+      { label: "バレーコード", frets: [3, 0, 1, 1], fingers: [3, 0, 1, 1], baseFret: 1 }
+    ],
+    "7sus4": [
+      { label: "ローコード", frets: [3, 3, 1, 3], fingers: [2, 3, 1, 4], baseFret: 1 }
+    ],
+    "6": [
+      { label: "ローコード", frets: [2, 2, 1, 3], fingers: [2, 3, 1, 4], baseFret: 1 }
+    ],
+    "add9": [
+      { label: "ローコード", frets: [0, 0, 1, 0], fingers: [0, 0, 1, 0], baseFret: 1 }
     ]
   },
   "F#": {
     "major": [
-      { label: "ローコード", frets: [3, 1, 2, 1], fingers: [3, 1, 2, 1], baseFret: 1 }
+      { label: "バレーコード", frets: [3, 1, 2, 1], fingers: [3, 1, 2, 1], baseFret: 1 }
     ],
     "m": [
       { label: "ローコード", frets: [2, 1, 2, 0], fingers: [2, 1, 3, 0], baseFret: 1 }
     ],
     "7": [
-      { label: "バレーコード", frets: [3, 4, 2, 4], fingers: [2, 3, 1, 4], baseFret: 1 }
+      { label: "ローコード", frets: [3, 4, 2, 4], fingers: [2, 3, 1, 4], baseFret: 1 }
+    ],
+    "maj7": [
+      { label: "ハイポジション", frets: [2, 4, 1, 3], fingers: [2, 4, 1, 3], baseFret: 2 }
+    ],
+    "m7": [
+      { label: "ハイポジション", frets: [1, 3, 1, 3], fingers: [1, 3, 2, 4], baseFret: 2 }
+    ],
+    "dim": [
+      { label: "ローコード", frets: [2, 3, 2, 3], fingers: [1, 3, 2, 4], baseFret: 1 }
+    ],
+    "m7b5": [
+      { label: "ローコード", frets: [2, 4, 2, 3], fingers: [1, 4, 2, 3], baseFret: 1 }
+    ],
+    "aug": [
+      { label: "ローコード", frets: [3, 2, 2, 1], fingers: [3, 2, 2, 1], baseFret: 1 }
+    ],
+    "sus4": [
+      { label: "ローコード", frets: [4, 1, 2, 2], fingers: [4, 1, 2, 2], baseFret: 1 }
+    ],
+    "7sus4": [
+      { label: "ハイポジション", frets: [3, 3, 1, 3], fingers: [2, 3, 1, 4], baseFret: 2 }
+    ],
+    "6": [
+      { label: "ローコード", frets: [3, 3, 2, 4], fingers: [2, 3, 1, 4], baseFret: 1 }
+    ],
+    "add9": [
+      { label: "バレーコード", frets: [1, 1, 2, 1], fingers: [1, 1, 2, 1], baseFret: 1 }
     ]
   },
   "G": {
@@ -1598,17 +1785,71 @@ const CHORDS = {
     ],
     "7": [
       { label: "ローコード", frets: [0, 2, 1, 2], fingers: [0, 2, 1, 3], baseFret: 1 }
+    ],
+    "maj7": [
+      { label: "バレーコード", frets: [0, 2, 2, 2], fingers: [0, 1, 1, 1], baseFret: 1 }
+    ],
+    "m7": [
+      { label: "バレーコード", frets: [0, 2, 1, 1], fingers: [0, 2, 1, 1], baseFret: 1 }
+    ],
+    "dim": [
+      { label: "ローコード", frets: [0, 1, 0, 1], fingers: [0, 1, 0, 2], baseFret: 1 }
+    ],
+    "m7b5": [
+      { label: "バレーコード", frets: [0, 1, 1, 1], fingers: [0, 1, 1, 1], baseFret: 1 }
+    ],
+    "aug": [
+      { label: "ローコード", frets: [0, 3, 3, 2], fingers: [0, 2, 3, 1], baseFret: 1 }
+    ],
+    "sus4": [
+      { label: "ローコード", frets: [0, 2, 3, 3], fingers: [0, 1, 2, 3], baseFret: 1 }
+    ],
+    "7sus4": [
+      { label: "ローコード", frets: [0, 2, 1, 3], fingers: [0, 2, 1, 3], baseFret: 1 }
+    ],
+    "6": [
+      { label: "ローコード", frets: [0, 2, 0, 2], fingers: [0, 1, 0, 2], baseFret: 1 }
+    ],
+    "add9": [
+      { label: "バレーコード", frets: [2, 2, 3, 2], fingers: [1, 1, 2, 1], baseFret: 1 }
     ]
   },
   "G#": {
     "major": [
-      { label: "バレーコード", frets: [5, 3, 4, 3], fingers: [4, 1, 2, 1], baseFret: 1 }
+      { label: "ハイポジション", frets: [3, 1, 2, 1], fingers: [3, 1, 2, 1], baseFret: 3 }
     ],
     "m": [
-      { label: "バレーコード", frets: [4, 3, 4, 2], fingers: [3, 2, 4, 1], baseFret: 1 }
+      { label: "ローコード", frets: [4, 3, 4, 2], fingers: [3, 2, 4, 1], baseFret: 1 }
     ],
     "7": [
-      { label: "バレーコード", frets: [1, 3, 2, 3], fingers: [1, 3, 2, 4], baseFret: 1 }
+      { label: "ローコード", frets: [1, 3, 2, 3], fingers: [1, 3, 2, 4], baseFret: 1 }
+    ],
+    "maj7": [
+      { label: "ローコード", frets: [1, 3, 3, 3], fingers: [1, 3, 3, 3], baseFret: 1 }
+    ],
+    "m7": [
+      { label: "ローコード", frets: [1, 3, 2, 2], fingers: [1, 4, 2, 3], baseFret: 1 }
+    ],
+    "dim": [
+      { label: "ローコード", frets: [1, 2, 1, 2], fingers: [1, 3, 2, 4], baseFret: 1 }
+    ],
+    "m7b5": [
+      { label: "ローコード", frets: [1, 2, 2, 2], fingers: [1, 2, 3, 4], baseFret: 1 }
+    ],
+    "aug": [
+      { label: "ローコード", frets: [1, 0, 0, 3], fingers: [1, 0, 0, 3], baseFret: 1 }
+    ],
+    "sus4": [
+      { label: "ローコード", frets: [1, 3, 4, 4], fingers: [1, 2, 3, 4], baseFret: 1 }
+    ],
+    "7sus4": [
+      { label: "ローコード", frets: [1, 3, 2, 4], fingers: [1, 3, 2, 4], baseFret: 1 }
+    ],
+    "6": [
+      { label: "ローコード", frets: [1, 3, 1, 3], fingers: [1, 3, 2, 4], baseFret: 1 }
+    ],
+    "add9": [
+      { label: "ハイポジション", frets: [1, 1, 2, 1], fingers: [1, 1, 2, 1], baseFret: 3 }
     ]
   },
   "A": {
@@ -1620,6 +1861,33 @@ const CHORDS = {
     ],
     "7": [
       { label: "ローコード", frets: [0, 1, 0, 0], fingers: [0, 1, 0, 0], baseFret: 1 }
+    ],
+    "maj7": [
+      { label: "バレーコード", frets: [1, 1, 0, 0], fingers: [1, 1, 0, 0], baseFret: 1 }
+    ],
+    "m7": [
+      { label: "ローコード", frets: [0, 0, 0, 0], fingers: [0, 0, 0, 0], baseFret: 1 }
+    ],
+    "dim": [
+      { label: "ローコード", frets: [2, 3, 2, 3], fingers: [1, 3, 2, 4], baseFret: 1 }
+    ],
+    "m7b5": [
+      { label: "ローコード", frets: [2, 3, 3, 3], fingers: [1, 3, 3, 3], baseFret: 1 }
+    ],
+    "aug": [
+      { label: "バレーコード", frets: [2, 1, 1, 0], fingers: [2, 1, 1, 0], baseFret: 1 }
+    ],
+    "sus4": [
+      { label: "ローコード", frets: [2, 2, 0, 0], fingers: [1, 2, 0, 0], baseFret: 1 }
+    ],
+    "7sus4": [
+      { label: "ローコード", frets: [0, 2, 0, 0], fingers: [0, 2, 0, 0], baseFret: 1 }
+    ],
+    "6": [
+      { label: "ハイポジション", frets: [1, 3, 1, 3], fingers: [1, 3, 2, 4], baseFret: 2 }
+    ],
+    "add9": [
+      { label: "ローコード", frets: [2, 1, 0, 2], fingers: [2, 1, 0, 3], baseFret: 1 }
     ]
   },
   "A#": {
@@ -1631,6 +1899,33 @@ const CHORDS = {
     ],
     "7": [
       { label: "バレーコード", frets: [1, 2, 1, 1], fingers: [1, 2, 1, 1], baseFret: 1 }
+    ],
+    "maj7": [
+      { label: "ローコード", frets: [3, 2, 1, 0], fingers: [3, 2, 1, 0], baseFret: 1 }
+    ],
+    "m7": [
+      { label: "バレーコード", frets: [1, 1, 1, 1], fingers: [1, 1, 1, 1], baseFret: 1 }
+    ],
+    "dim": [
+      { label: "ローコード", frets: [0, 1, 0, 1], fingers: [0, 1, 0, 2], baseFret: 1 }
+    ],
+    "m7b5": [
+      { label: "ローコード", frets: [3, 4, 4, 4], fingers: [1, 3, 3, 3], baseFret: 1 }
+    ],
+    "aug": [
+      { label: "ローコード", frets: [3, 2, 2, 1], fingers: [3, 2, 2, 1], baseFret: 1 }
+    ],
+    "sus4": [
+      { label: "バレーコード", frets: [3, 3, 1, 1], fingers: [2, 3, 1, 1], baseFret: 1 }
+    ],
+    "7sus4": [
+      { label: "バレーコード", frets: [1, 3, 1, 1], fingers: [1, 3, 1, 1], baseFret: 1 }
+    ],
+    "6": [
+      { label: "バレーコード", frets: [0, 2, 1, 1], fingers: [0, 2, 1, 1], baseFret: 1 }
+    ],
+    "add9": [
+      { label: "ローコード", frets: [3, 2, 1, 3], fingers: [3, 2, 1, 4], baseFret: 1 }
     ]
   },
   "B": {
@@ -1642,6 +1937,33 @@ const CHORDS = {
     ],
     "7": [
       { label: "バレーコード", frets: [2, 3, 2, 2], fingers: [1, 2, 1, 1], baseFret: 1 }
+    ],
+    "maj7": [
+      { label: "ローコード", frets: [4, 3, 2, 1], fingers: [4, 3, 2, 1], baseFret: 1 }
+    ],
+    "m7": [
+      { label: "バレーコード", frets: [2, 2, 2, 2], fingers: [1, 1, 1, 1], baseFret: 1 }
+    ],
+    "dim": [
+      { label: "ローコード", frets: [1, 2, 1, 2], fingers: [1, 3, 2, 4], baseFret: 1 }
+    ],
+    "m7b5": [
+      { label: "ローコード", frets: [4, 2, 1, 0], fingers: [4, 2, 1, 0], baseFret: 1 }
+    ],
+    "aug": [
+      { label: "ローコード", frets: [0, 3, 3, 2], fingers: [0, 2, 3, 1], baseFret: 1 }
+    ],
+    "sus4": [
+      { label: "バレーコード", frets: [4, 4, 2, 2], fingers: [3, 4, 1, 1], baseFret: 1 }
+    ],
+    "7sus4": [
+      { label: "バレーコード", frets: [2, 4, 2, 2], fingers: [1, 4, 1, 1], baseFret: 1 }
+    ],
+    "6": [
+      { label: "ローコード", frets: [1, 3, 2, 2], fingers: [1, 4, 2, 3], baseFret: 1 }
+    ],
+    "add9": [
+      { label: "ローコード", frets: [4, 3, 2, 4], fingers: [3, 2, 1, 4], baseFret: 1 }
     ]
   }
 };
@@ -2928,7 +3250,7 @@ function drawDiagram(chord, rootNote, compact = false) {
   // ベースフレット番号（2フレット以上）
   if (baseFret > 1) {
     const frFontSize = compact ? "0.55rem" : "0.72rem";
-    const frX = compact ? MARGIN_LEFT - 21 : MARGIN_LEFT - 28;
+    const frX = compact ? MARGIN_LEFT - 19 : MARGIN_LEFT - 28; // コンパクト時に左端で見切れないよう2px内側
     const t = makeText(baseFret + "fr", frX, MARGIN_TOP + FRET_SPACING * 0.65, "#888", frFontSize);
     svg.appendChild(t);
   }
