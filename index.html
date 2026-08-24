@@ -1260,13 +1260,19 @@
     <div class="modal-title">💡 これ、知ってましたか？</div>
 
     <div class="help-section">
+      <h3>🪕 弦の並びは G・C・E・A です</h3>
+      <p>ウクレレの標準チューニング（High-G）に合わせています。弦の並びは市販のコード表と同じで、<strong>横向き表示なら上から 1弦A・2弦E・3弦C・4弦G</strong>、<strong>縦向き表示なら左から 4弦G・3弦C・2弦E・1弦A</strong> です。</p>
+      <p style="margin-top:8px;">「▶ 再生」の音も High-G で鳴らしています。4弦のGが3弦のCより高い音になる、ウクレレ独特の響き（再入弦）が耳で確認できます。</p>
+    </div>
+
+    <div class="help-section">
       <h3>⌨️ Enterキーでコード表に追加できます</h3>
       <p>ルート音とコードタイプを選んだあと、<strong>Enterキー</strong>を押すだけでマイコード表に追加できます。いちいちボタンをクリックしなくてOKです。</p>
     </div>
 
     <div class="help-section">
-      <h3>🎸 ルート音は♭表記に切り替えられます</h3>
-      <p>右上の <span class="help-badge">♭</span> ボタンを押すと、C# が D♭、F# が G♭ など、フラット表記に切り替わります。楽譜に合わせて使い分けてください。</p>
+      <h3>🎵 ルート音は♭表記に切り替えられます</h3>
+      <p><span class="help-badge">♭ で表示</span> ボタンを押すと、C# が D♭、F# が G♭ など、フラット表記に切り替わります。楽譜に合わせて使い分けてください。</p>
     </div>
 
     <div class="help-section">
@@ -1281,7 +1287,7 @@
         <span style="color:#c0392b;font-weight:700;">●</span> 赤 = 中指
         <span style="color:#27ae60;font-weight:700;">●</span> 緑 = 薬指
         <span style="color:#e67e22;font-weight:700;">●</span> 橙 = 小指<br>
-        ドット内の数字も同じ意味です。左端に <span class="help-badge">4fr</span> などが表示されている場合はハイポジションのコードです。
+        ドット内の数字も同じ意味です。図のそば（<strong>横向きなら下、縦向きなら左</strong>）に <span class="help-badge">4fr</span> などが表示されている場合は、そこが何フレット目から始まる図かを示しています＝ハイポジションのコードです。
       </p>
     </div>
 
@@ -1304,7 +1310,7 @@
     </div>
 
     <div class="help-section">
-      <h3>🎸 オリジナルのコードフォームを自作できます</h3>
+      <h3>🪕 オリジナルのコードフォームを自作できます</h3>
       <p>画面下の「カスタムコード作成ライブラリ」から「＋ 新規作成」を押すと、自分だけのコードフォームを作れます。</p>
       <ul>
         <li>フレット盤をタップしてドットを配置、再タップで削除</li>
@@ -1319,6 +1325,7 @@
     <div class="help-section">
       <h3>📐 最大16個まで追加できます</h3>
       <p>マイコード表には最大16個までコードを追加できます。4列×4行で1画面にまとめて表示されます。</p>
+      <p style="margin-top:8px;">16個すべて追加しても<strong>A4用紙1枚に収まる</strong>ので、印刷が2枚に分かれることはありません。</p>
     </div>
 
   </div>
@@ -2998,8 +3005,10 @@ function printSheet() {
   // 既存の複製ヘッダーが残っていれば削除
   document.querySelectorAll('.sheet-print-page-header').forEach(el => el.remove());
 
-  // ページごとに改ページしてヘッダーを複製挿入（コード図の向きに関わらず12個ごと）
-  const chunkSize = 12;
+  // ページごとに改ページしてヘッダーを複製挿入
+  // ウクレレは上限16個が縦横とも4列でA4一枚に収まるため、通常この改ページは発生しない。
+  // 将来 MAX_SHEET_CHORDS を増やしたときの保険として仕組みは残してある。
+  const chunkSize = MAX_SHEET_CHORDS;
   const grid = document.getElementById('sheetGrid');
   const originalBrand = document.querySelector('.sheet-brand-print');
   const cards = Array.from(grid.children).filter(el => el.classList.contains('sheet-card'));
@@ -3075,14 +3084,12 @@ function printSheet() {
       #sheetPrintTitle { display: block !important; }
       body { padding: 0 !important; background: #fff !important; }
 
-      /* ウクレレは4弦ぶん図が細いので、ギター版より1列多く入る（横向き図=4列、縦向き図=5列）
-         ※最終的な列数・1ページあたりの個数はフェーズ3で実際に印刷して詰める */
+      /* ウクレレは4弦ぶん図が細く、縦横どちらの向きでも4列で16個すべてがA4一枚に収まる
+         （A4可能領域198×285mm での実測：横向き図=172mm / 縦向き図=254mm）
+         列数を5ではなく4にしているのは、縦の余白に余裕があるぶんカードを大きく取るため */
       .sheet-grid {
-        grid-template-columns: repeat(5, 1fr) !important;
-        gap: 3mm !important;
-      }
-      body.horiz-mode .sheet-grid {
         grid-template-columns: repeat(4, 1fr) !important;
+        gap: 3mm !important;
       }
       .sheet-card {
         width: 100% !important;
