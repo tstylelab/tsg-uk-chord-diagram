@@ -10,7 +10,7 @@
 <meta property="og:title" content="ウクレレコード表【プロ監修・無料】- ギタースクールTSG">
 <meta property="og:description" content="初心者向けウクレレコード表。コードの押さえ方を図で確認できるプロ監修・無料Webアプリ。主要コードを一覧表示。ギタースクールTSG提供。監修：杉山つよし。">
 <meta property="og:url" content="https://uk-chord.tsg-gt.com">
-<meta property="og:image" content="https://uk-chord.tsg-gt.com/images/banner-ukulele.png">
+<meta property="og:image" content="https://uk-chord.tsg-gt.com/images/banner-uk-chord.png">
 <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;600&display=swap" rel="stylesheet">
 <style>
   * { box-sizing: border-box; margin: 0; padding: 0; }
@@ -1087,10 +1087,11 @@
     height: auto;
     display: block;
   }
-  /* PC: 2列横並び */
+  /* PC: 2列横並び（4枚あるので折り返して2×2になる） */
   @media (min-width: 640px) {
     .tools-banners {
       flex-direction: row;
+      flex-wrap: wrap;
       justify-content: center;
     }
     .tools-banner-link {
@@ -1499,11 +1500,17 @@
 <div class="tools-section">
   <div class="tools-title">TSG Guitar Tools</div>
   <div class="tools-banners">
+    <a class="tools-banner-link" href="https://metrotuner.tsg-gt.com">
+      <img src="images/banner-metroluner.png" alt="TSG Metronome & Tuner">
+    </a>
+    <a class="tools-banner-link" href="https://chord.tsg-gt.com">
+      <img src="images/banner-chord.png" alt="TSG Basic Chord Diagram">
+    </a>
     <a class="tools-banner-link" href="https://scale.tsg-gt.com">
       <img src="images/banner-scale.png" alt="TSG Guitar Scale Viewer">
     </a>
-    <a class="tools-banner-link" href="https://metrotuner.tsg-gt.com">
-      <img src="images/banner-metroluner.png" alt="TSG Metronome & Tuner">
+    <a class="tools-banner-link" href="https://rhythm.tsg-gt.com">
+      <img src="images/banner-rhythm.png" alt="TSG Rhythm Trainer">
     </a>
   </div>
 </div>
