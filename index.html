@@ -1,0 +1,3214 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<link rel="icon" type="image/png" href="favicon.png">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>ウクレレコード表【プロ監修・無料】- ギタースクールTSG</title>
+<meta name="description" content="初心者向けウクレレコード表。コードの押さえ方を図で確認できるプロ監修・無料Webアプリ。主要コードを一覧表示。ギタースクールTSG提供。監修：杉山つよし。">
+<meta property="og:type" content="website">
+<meta property="og:title" content="ウクレレコード表【プロ監修・無料】- ギタースクールTSG">
+<meta property="og:description" content="初心者向けウクレレコード表。コードの押さえ方を図で確認できるプロ監修・無料Webアプリ。主要コードを一覧表示。ギタースクールTSG提供。監修：杉山つよし。">
+<meta property="og:url" content="https://uk-chord.tsg-gt.com">
+<meta property="og:image" content="https://uk-chord.tsg-gt.com/images/banner-ukulele.png">
+<link href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;600&display=swap" rel="stylesheet">
+<style>
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  body {
+    font-family: system-ui, -apple-system, 'Helvetica Neue', sans-serif;
+    background: #f0f2f5;
+    color: #222;
+    min-height: 100vh;
+    padding: 16px;
+  }
+
+  /* ====== Header ====== */
+  header {
+    display: flex;
+    align-items: stretch;
+    justify-content: center;
+    margin: -16px -16px 18px;
+    padding: 14px 28px;
+    flex-wrap: nowrap;
+    gap: 36px;
+    background: #1a1a2e;
+  }
+
+  /* ====== Brand Title ====== */
+  .brand-wrap {
+    display: flex;
+    align-items: flex-end;
+    gap: 12px;
+  }
+  .brand-main {
+    font-family: 'Oswald', sans-serif;
+    font-size: 2.8rem;
+    font-weight: 700;
+    color: #fff;
+    letter-spacing: -0.01em;
+    line-height: 1;
+    display: flex;
+    align-items: flex-end;
+    gap: 10px;
+  }
+  .brand-right {
+    padding-bottom: 3px;
+    border-bottom: 2.5px solid #c0392b;
+  }
+  .brand-sub1 {
+    font-family: 'Oswald', sans-serif;
+    font-size: 0.9rem;
+    font-weight: 400;
+    letter-spacing: 0.22em;
+    color: #e88080;
+    text-transform: uppercase;
+    line-height: 1.25;
+  }
+  .brand-sub2 {
+    font-family: 'Oswald', sans-serif;
+    font-size: 1.4rem;
+    font-weight: 600;
+    letter-spacing: 0.12em;
+    color: #fff;
+    text-transform: uppercase;
+    line-height: 1.2;
+  }
+
+  .print-btn {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    padding: 10px 18px;
+    background: #1a1a2e;
+    color: #fff;
+    border: none;
+    border-radius: 8px;
+    font-size: 0.95rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: 0.15s;
+    -webkit-tap-highlight-color: transparent;
+  }
+  .print-btn:hover { background: #2e2e50; }
+  .print-btn:active { transform: scale(0.97); }
+  .share-btn {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    padding: 10px 18px;
+    background: #2176ae;
+    color: #fff;
+    border: none;
+    border-radius: 8px;
+    font-size: 0.95rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: 0.15s;
+    -webkit-tap-highlight-color: transparent;
+  }
+  .share-btn:hover { background: #1a5d8a; }
+  .share-btn:active { transform: scale(0.97); }
+
+  /* ====== 2列レイアウト（広い画面用） ====== */
+  .main-layout {
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+  }
+  .left-col {
+    min-width: 0;
+  }
+  @media (min-width: 1100px) {
+    .main-layout {
+      flex-direction: row;
+      align-items: flex-start;
+      gap: 20px;
+    }
+    .left-col {
+      flex: 0 0 auto;
+      width: 480px;
+    }
+    .sheet-section {
+      flex: 1 1 0;
+      min-width: 0;
+      margin-top: 0 !important;
+    }
+    .sheet-grid {
+      grid-template-columns: repeat(4, auto) !important;
+    }
+  }
+
+  /* ====== Controls panel ====== */
+  .controls {
+    background: #fff;
+    border-radius: 12px;
+    padding: 12px 16px;
+    margin-bottom: 14px;
+    box-shadow: 0 1px 4px rgba(0,0,0,0.08);
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  .ctrl-row {
+    display: flex;
+    align-items: flex-start;
+    gap: 8px;
+    flex-wrap: nowrap;
+  }
+
+  .ctrl-label {
+    font-size: 0.8rem;
+    color: #888;
+    width: 58px;
+    flex-shrink: 0;
+    font-weight: 600;
+    padding-top: 8px;
+    line-height: 1.3;
+  }
+
+  .btn-group {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 5px;
+  }
+
+  /* ラベルの直後のbtn-groupは残り幅を使う */
+  .ctrl-label + .btn-group {
+    flex: 1;
+  }
+
+  /* グループ区切り */
+  .ctrl-row.group-sep {
+    margin-top: 6px;
+    padding-top: 10px;
+    border-top: 1px solid #eee;
+  }
+
+  .rbtn {
+    min-width: 44px;
+    height: 40px;
+    padding: 0 10px;
+    border: 1.5px solid #ddd;
+    background: #f7f8fa;
+    color: #444;
+    border-radius: 7px;
+    font-size: 0.92rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: 0.12s;
+    -webkit-tap-highlight-color: transparent;
+  }
+  .rbtn:hover { background: #eef0f4; border-color: #bbb; }
+  .rbtn:active { transform: scale(0.93); }
+  .rbtn.active {
+    background: #c0392b;
+    border-color: #c0392b;
+    color: #fff;
+  }
+
+  .tbtn {
+    padding: 8px 16px;
+    border: 1.5px solid #ddd;
+    background: #f7f8fa;
+    color: #555;
+    border-radius: 7px;
+    font-size: 0.92rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: 0.12s;
+    -webkit-tap-highlight-color: transparent;
+  }
+  .tbtn:hover { background: #eef0f4; border-color: #bbb; }
+  .tbtn:active { transform: scale(0.93); }
+  .tbtn.active {
+    background: #2176ae;
+    border-color: #2176ae;
+    color: #fff;
+  }
+
+  /* ====== Diagrams area ====== */
+  .diagrams-area {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 16px;
+    justify-content: center;
+  }
+
+  .chord-card {
+    background: #fff;
+    border-radius: 12px;
+    padding: 14px 18px 18px;
+    box-shadow: 0 1px 4px rgba(0,0,0,0.08);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .chord-name {
+    font-family: 'Oswald', sans-serif;
+    font-size: 1.5rem;
+    font-weight: 600;
+    color: #1a1a2e;
+    letter-spacing: 0.06em;
+    margin-bottom: 2px;
+  }
+
+  .chord-position {
+    font-size: 0.72rem;
+    color: #999;
+    font-weight: 600;
+    letter-spacing: 0.04em;
+    margin-bottom: 10px;
+  }
+
+  .no-chord {
+    color: #aaa;
+    font-size: 0.95rem;
+    padding: 40px 0;
+    text-align: center;
+    width: 100%;
+  }
+
+  /* ====== Legend ====== */
+  .finger-legend {
+    display: flex;
+    gap: 14px;
+    flex-wrap: wrap;
+    margin-top: 18px;
+    font-size: 0.78rem;
+    color: #888;
+    font-weight: 600;
+  }
+
+  .finger-legend span {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+  }
+
+  .legend-dot {
+    width: 14px; height: 14px;
+    border-radius: 50%;
+    display: inline-block;
+    flex-shrink: 0;
+  }
+
+  .acc-toggle {
+    padding: 7px 12px;
+    border: 1.5px solid #2176ae;
+    background: #fff;
+    color: #2176ae;
+    border-radius: 7px;
+    font-size: 1rem;
+    font-weight: 700;
+    cursor: pointer;
+    transition: 0.12s;
+    flex-shrink: 0;
+    -webkit-tap-highlight-color: transparent;
+  }
+  .acc-toggle.flat-mode {
+    background: #2176ae;
+    border-color: #2176ae;
+    color: #fff;
+  }
+
+  .orient-toggle {
+    padding: 7px 12px;
+    border: 1.5px solid #888;
+    background: #fff;
+    color: #555;
+    border-radius: 7px;
+    font-size: 0.85rem;
+    font-weight: 700;
+    cursor: pointer;
+    transition: 0.12s;
+    flex-shrink: 0;
+    -webkit-tap-highlight-color: transparent;
+    white-space: nowrap;
+  }
+  .orient-toggle:hover { background: #f0f2f5; }
+  .orient-toggle.horiz-mode {
+    background: #6c3483;
+    border-color: #6c3483;
+    color: #fff;
+  }
+
+  /* ====== Add button ====== */
+  .add-btn-row {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin-top: 10px;
+  }
+  .add-btn {
+    padding: 9px 20px;
+    background: #27ae60;
+    color: #fff;
+    border: none;
+    border-radius: 8px;
+    font-size: 0.95rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: 0.12s;
+    -webkit-tap-highlight-color: transparent;
+  }
+  .add-btn:hover { background: #219a52; }
+  .add-btn:active { transform: scale(0.97); }
+  .add-btn:disabled { background: #bbb; cursor: default; transform: none; }
+  .add-hint {
+    font-size: 0.75rem;
+    color: #aaa;
+    white-space: nowrap;
+  }
+  .add-hint kbd {
+    display: inline-block;
+    padding: 1px 5px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    background: #f5f5f5;
+    color: #888;
+    font-size: 0.72rem;
+    font-family: inherit;
+    line-height: 1.4;
+  }
+
+  /* ====== Play button ====== */
+  .play-btn {
+    display: flex;
+    align-items: center;
+    gap: 4px;
+    padding: 0 12px;
+    height: 38px;
+    border-radius: 8px;
+    border: 2px solid #2176ae;
+    background: #fff;
+    color: #2176ae;
+    font-size: 0.92rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: 0.15s;
+    -webkit-tap-highlight-color: transparent;
+    white-space: nowrap;
+    flex-shrink: 0;
+  }
+  .play-btn:hover { background: #2176ae; color: #fff; }
+  .play-btn:active { transform: scale(0.93); }
+  .play-label {
+    font-size: 0.72rem;
+    font-weight: 500;
+    opacity: 0.75;
+  }
+
+  /* ====== Chord Sheet ====== */
+  .sheet-section {
+    margin-top: 28px;
+  }
+  .sheet-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 12px;
+    flex-wrap: wrap;
+    gap: 8px;
+  }
+  .sheet-title-block {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding-left: 12px;
+    border-left: 4px solid #c0392b;
+    line-height: 1;
+    gap: 3px;
+  }
+  .sheet-title-en {
+    font-family: 'Oswald', sans-serif;
+    font-size: 0.65rem;
+    font-weight: 600;
+    color: #c0392b;
+    letter-spacing: 0.3em;
+    text-transform: uppercase;
+  }
+  .sheet-title {
+    font-family: 'Oswald', sans-serif;
+    font-size: 1.45rem;
+    font-weight: 600;
+    color: #1a1a2e;
+    letter-spacing: 0.1em;
+    line-height: 1;
+  }
+  .sheet-count {
+    display: inline-block;
+    font-size: 0.72rem;
+    color: #fff;
+    background: #1a1a2e;
+    font-weight: 700;
+    padding: 2px 8px;
+    border-radius: 20px;
+    letter-spacing: 0.04em;
+    margin-left: 4px;
+    vertical-align: middle;
+  }
+  .sheet-actions { display: flex; gap: 8px; }
+  .clear-btn {
+    padding: 9px 16px;
+    background: #fff0f0;
+    border: 1.5px solid #f5a8a8;
+    border-radius: 8px;
+    font-size: 0.9rem;
+    font-weight: 600;
+    color: #c0392b;
+    cursor: pointer;
+    transition: 0.12s;
+  }
+  .clear-btn:hover { background: #fdd; border-color: #e07070; }
+
+  .sheet-grid {
+    display: grid;
+    grid-template-columns: repeat(4, auto);
+    gap: 16px;
+    justify-content: flex-start;
+  }
+  .sheet-empty {
+    grid-column: 1 / -1;
+    color: #bbb;
+    font-size: 0.9rem;
+    padding: 24px 0;
+  }
+  .sheet-card {
+    background: #fff;
+    border-radius: 12px;
+    padding: 12px 16px 16px;
+    box-shadow: 0 1px 4px rgba(0,0,0,0.08);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    position: relative;
+  }
+  .sheet-card.compact {
+    padding: 8px 10px 10px;
+    border-radius: 9px;
+  }
+  .sheet-card.compact .chord-name { font-size: 1.1rem; }
+  .sheet-card.compact .chord-position { font-size: 0.62rem; margin-bottom: 6px; }
+  .sheet-card-remove {
+    position: absolute;
+    top: 6px; right: 8px;
+    background: none;
+    border: none;
+    color: #ccc;
+    font-size: 1rem;
+    cursor: pointer;
+    line-height: 1;
+    padding: 2px 4px;
+    transition: 0.1s;
+  }
+  .sheet-card-remove:hover { color: #c0392b; }
+  .sheet-card[draggable="true"] { cursor: grab; }
+  .sheet-card.dragging { opacity: 0.4; }
+  .sheet-card.drag-over { outline: 2px dashed #2176ae; outline-offset: 2px; }
+  .library-card[draggable="true"] { cursor: grab; }
+  .library-card.dragging { opacity: 0.4; }
+  .library-card.drag-over { outline: 2px dashed #2176ae; outline-offset: 2px; }
+
+  /* ====== Help Modal ====== */
+  .help-btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0 14px;
+    height: 38px;
+    background: #c0392b;
+    border: none;
+    color: #fff;
+    border-radius: 8px;
+    font-size: 0.88rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: 0.15s;
+    flex-shrink: 0;
+    -webkit-tap-highlight-color: transparent;
+    white-space: nowrap;
+  }
+  .help-btn:hover { background: #a93226; }
+
+  .modal-overlay {
+    display: none;
+    position: fixed;
+    inset: 0;
+    background: rgba(0,0,0,0.45);
+    z-index: 1000;
+    align-items: center;
+    justify-content: center;
+    padding: 16px;
+  }
+  .modal-overlay.open { display: flex; }
+  .modal-overlay:focus { outline: none; }
+
+  .modal {
+    background: #fff;
+    border-radius: 16px;
+    padding: 28px 28px 24px;
+    max-width: 520px;
+    width: 100%;
+    max-height: 85vh;
+    overflow-y: auto;
+    box-shadow: 0 8px 32px rgba(0,0,0,0.18);
+    position: relative;
+  }
+
+  .modal-title {
+    font-family: 'Oswald', sans-serif;
+    font-size: 1.3rem;
+    color: #1a1a2e;
+    letter-spacing: 0.08em;
+    margin-bottom: 18px;
+    padding-bottom: 10px;
+    border-bottom: 2px solid #f0f2f5;
+  }
+
+  .modal-close {
+    position: absolute;
+    top: 14px; right: 16px;
+    background: none;
+    border: none;
+    font-size: 1.4rem;
+    color: #aaa;
+    cursor: pointer;
+    line-height: 1;
+    padding: 4px 6px;
+    transition: 0.1s;
+  }
+  .modal-close:hover { color: #333; }
+
+  .help-section {
+    margin-bottom: 18px;
+  }
+  .help-section h3 {
+    font-size: 0.82rem;
+    font-weight: 700;
+    color: #c0392b;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    margin-bottom: 7px;
+  }
+  .help-section p, .help-section li {
+    font-size: 0.88rem;
+    color: #444;
+    line-height: 1.7;
+  }
+  .help-section ul {
+    padding-left: 1.2em;
+    margin: 0;
+  }
+  .help-section li { margin-bottom: 3px; }
+
+  .help-badge {
+    display: inline-block;
+    background: #f0f2f5;
+    border-radius: 5px;
+    padding: 1px 7px;
+    font-size: 0.8rem;
+    font-weight: 700;
+    color: #555;
+    margin: 0 2px;
+  }
+  .help-badge.root { background: #c0392b; color: #fff; }
+  .help-badge.type { background: #2176ae; color: #fff; }
+
+  /* ====== ユーザーセット保存モーダル ====== */
+  .preset-save-sub {
+    font-size: 0.78rem;
+    font-weight: 700;
+    color: #888;
+    letter-spacing: 0.06em;
+    margin-bottom: 7px;
+  }
+  .preset-save-list {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+    max-height: 38vh;
+    overflow-y: auto;
+  }
+  .preset-save-item {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 10px;
+    width: 100%;
+    padding: 10px 13px;
+    border: 1.5px solid #ddd;
+    border-radius: 8px;
+    background: #f8f9fa;
+    font-size: 0.92rem;
+    font-weight: 600;
+    color: #1a1a2e;
+    text-align: left;
+    cursor: pointer;
+    transition: 0.12s;
+    -webkit-tap-highlight-color: transparent;
+  }
+  .preset-save-item:hover { background: #eef4fb; border-color: #2176ae; }
+  .preset-save-item:active { transform: scale(0.98); }
+  .preset-save-item .cnt {
+    font-size: 0.74rem;
+    font-weight: 600;
+    color: #2176ae;
+    flex-shrink: 0;
+    white-space: nowrap;
+  }
+  .preset-save-newrow { display: flex; gap: 8px; }
+  .preset-save-input {
+    flex: 1;
+    min-width: 0;
+    padding: 9px 12px;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    font-size: 0.92rem;
+  }
+  .preset-save-input:focus { outline: none; border-color: #2176ae; }
+  .preset-save-btn {
+    padding: 9px 16px;
+    background: #27ae60;
+    color: #fff;
+    border: none;
+    border-radius: 8px;
+    font-size: 0.9rem;
+    font-weight: 700;
+    cursor: pointer;
+    white-space: nowrap;
+    -webkit-tap-highlight-color: transparent;
+  }
+  .preset-save-btn:hover { background: #219a52; }
+  .preset-save-btn:active { transform: scale(0.97); }
+
+  /* ====== Sheet title input ====== */
+  .sheet-title-input {
+    padding: 4px 10px;
+    border: 1px solid #ddd;
+    border-radius: 7px;
+    font-size: 0.88rem;
+    color: #333;
+    width: 200px;
+    min-width: 0;
+  }
+  .sheet-title-input:focus { outline: none; border-color: #2176ae; }
+  .sheet-print-title {
+    display: none; /* 画面では非表示 */
+  }
+
+  /* ====== Library ====== */
+  .library-section {
+    margin-top: 18px;
+    background: #fff;
+    border-radius: 12px;
+    padding: 14px 16px;
+    box-shadow: 0 1px 4px rgba(0,0,0,0.08);
+  }
+  .library-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 12px;
+  }
+  .library-new-btn {
+    padding: 5px 12px;
+    background: #27ae60;
+    color: #fff;
+    border: none;
+    border-radius: 7px;
+    font-size: 0.85rem;
+    font-weight: 700;
+    cursor: pointer;
+  }
+  .library-new-btn:hover { background: #219a52; }
+  .library-empty {
+    font-size: 0.85rem;
+    color: #bbb;
+    padding: 10px 0;
+  }
+  .library-grid {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+  }
+  .library-card {
+    background: #f8f9fa;
+    border-radius: 10px;
+    padding: 8px 10px 10px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 4px;
+    position: relative;
+  }
+  .library-card-name {
+    font-size: 1rem;
+    font-weight: 700;
+    color: #1a1a2e;
+  }
+  .library-card-actions {
+    display: flex;
+    gap: 5px;
+    margin-top: 4px;
+  }
+  .library-card-btn {
+    padding: 5px 11px;
+    border: none;
+    border-radius: 6px;
+    font-family: 'Oswald', sans-serif;
+    font-size: 0.8rem;
+    font-weight: 400;
+    letter-spacing: 0.06em;
+    cursor: pointer;
+    transition: 0.12s;
+  }
+  .library-card-btn.add  { background: #27ae60; color: #fff; }
+  .library-card-btn.add:hover { background: #219a52; }
+  .library-card-btn.edit { background: #e9ecef; color: #333; }
+  .library-card-btn.edit:hover { background: #dee2e6; }
+  .library-card-btn.dupe { background: #eef4fb; color: #2176ae; }
+  .library-card-btn.dupe:hover { background: #d6e8f7; }
+  .library-card-btn.del  { background: #fff0f0; color: #c0392b; }
+  .library-card-btn.del:hover  { background: #fdd; }
+
+  /* ====== Custom Editor Modal ====== */
+  .custom-modal {
+    max-width: 420px;
+    width: 95vw;
+  }
+  .editor-name-row { margin-bottom: 12px; }
+  .editor-name-input {
+    width: 100%;
+    padding: 7px 12px;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    font-size: 1rem;
+    font-weight: 700;
+  }
+  .editor-name-input:focus { outline: none; border-color: #2176ae; }
+  .editor-basefret-row, .editor-finger-row {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 10px;
+  }
+  .editor-label { font-size: 0.82rem; color: #888; font-weight: 600; white-space: nowrap; }
+  .editor-select {
+    padding: 4px 8px;
+    border: 1px solid #ddd;
+    border-radius: 6px;
+    font-size: 0.88rem;
+  }
+  .editor-fingers { display: flex; gap: 6px; }
+  .editor-finger-btn {
+    width: 34px; height: 34px;
+    border-radius: 50%;
+    border: 2px solid transparent;
+    font-size: 0.85rem;
+    font-weight: 700;
+    cursor: pointer;
+    color: #fff;
+    transition: 0.12s;
+  }
+  .editor-finger-btn.active { border-color: #1a1a2e; transform: scale(1.15); }
+  .editor-board-wrap { margin: 12px 0 4px; }
+  .editor-string-heads {
+    display: grid;
+    grid-template-columns: repeat(4, 44px);
+    gap: 2px;
+    margin-bottom: 4px;
+    padding-left: 2px;
+  }
+  .editor-head-btn {
+    height: 52px;
+    border: 1px solid #ccc;
+    border-radius: 6px;
+    background: #f5f5f5;
+    font-size: 3rem;
+    cursor: pointer;
+    font-weight: 700;
+    transition: 0.1s;
+    line-height: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .editor-head-btn:hover { background: #e9ecef; }
+  .editor-board {
+    display: grid;
+    grid-template-columns: repeat(4, 44px);
+    grid-template-rows: repeat(5, 44px);
+    gap: 2px;
+    border: 2px solid #1a1a2e;
+    border-radius: 4px;
+    padding: 2px;
+    background: #f0f2f5;
+  }
+  .editor-cell {
+    background: #fff;
+    border-radius: 4px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    font-size: 0.8rem;
+    font-weight: 700;
+    color: #fff;
+    transition: 0.1s;
+    border: 1px solid #eee;
+  }
+  .editor-cell:hover { background: #e8f4f8; }
+  .editor-cell.dot {
+    border-radius: 50%;
+    width: 32px; height: 32px;
+    margin: auto;
+  }
+  .editor-hint {
+    font-size: 0.75rem;
+    color: #aaa;
+    margin-bottom: 12px;
+    text-align: center;
+  }
+  .editor-actions { display: flex; gap: 10px; }
+  .editor-save-btn {
+    flex: 1;
+    padding: 9px;
+    background: #1a1a2e;
+    color: #fff;
+    border: none;
+    border-radius: 8px;
+    font-size: 0.95rem;
+    font-weight: 700;
+    cursor: pointer;
+  }
+  .editor-save-btn:hover { background: #2e2e50; }
+  .editor-cancel-btn {
+    padding: 9px 16px;
+    background: #f0f2f5;
+    color: #555;
+    border: none;
+    border-radius: 8px;
+    font-size: 0.95rem;
+    cursor: pointer;
+  }
+
+  /* ====== 横向きエディター ====== */
+  .editor-board-wrap.horiz {
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+    gap: 4px;
+  }
+  .editor-board-wrap.horiz .editor-string-heads {
+    display: flex !important;
+    flex-direction: column;
+    gap: 2px;
+    margin-bottom: 0;
+    padding-left: 0;
+  }
+  .editor-board-wrap.horiz .editor-head-btn {
+    width: 44px;
+    height: 52px;
+  }
+  .editor-board-wrap.horiz .editor-board {
+    grid-template-columns: repeat(5, 44px);
+    grid-template-rows: repeat(4, 52px);
+  }
+
+  /* ====== Save Slots ====== */
+  .slots-section {
+    margin-top: 18px;
+    background: #fff;
+    border-radius: 12px;
+    padding: 14px 16px;
+    box-shadow: 0 1px 4px rgba(0,0,0,0.08);
+  }
+  .slots-title {
+    font-size: 0.85rem;
+    font-weight: 700;
+    color: #888;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    margin-bottom: 10px;
+  }
+  .slot-row {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin-bottom: 8px;
+  }
+  .slot-row:last-child { margin-bottom: 0; }
+  .slot-num {
+    font-size: 0.75rem;
+    font-weight: 700;
+    color: #fff;
+    background: #aab;
+    border-radius: 50%;
+    width: 22px;
+    height: 22px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+  }
+  .slot-num.has-data { background: #2176ae; }
+  .slot-name {
+    flex: 1;
+    max-width: 220px;
+    padding: 6px 10px;
+    border: 1px solid #ddd;
+    border-radius: 7px;
+    font-size: 0.88rem;
+    color: #333;
+    min-width: 0;
+  }
+  .slot-name:focus { outline: none; border-color: #2176ae; }
+  .slot-btn {
+    padding: 6px 11px;
+    border: none;
+    border-radius: 7px;
+    font-size: 0.82rem;
+    font-weight: 600;
+    cursor: pointer;
+    white-space: nowrap;
+    transition: 0.12s;
+  }
+  .slot-btn.save  { background: #1a1a2e; color: #fff; }
+  .slot-btn.save:hover  { background: #2e2e50; }
+  .slot-btn.load  { background: #2176ae; color: #fff; }
+  .slot-btn.load:hover  { background: #1a5f8a; }
+  .slot-btn.del   { background: #f0f2f5; color: #c0392b; }
+  .slot-btn.del:hover   { background: #f5c6c6; }
+  .slot-btn:disabled { opacity: 0.35; cursor: default; }
+  .slots-io {
+    display: flex;
+    gap: 8px;
+    margin-top: 12px;
+    padding-top: 12px;
+    border-top: 1px solid #eee;
+    flex-wrap: wrap;
+  }
+  .slot-io-btn {
+    padding: 6px 14px;
+    border: 1px solid #ccc;
+    border-radius: 7px;
+    background: #f8f9fa;
+    font-size: 0.82rem;
+    font-weight: 600;
+    cursor: pointer;
+    color: #555;
+    transition: 0.12s;
+  }
+  .slot-io-btn:hover { background: #e9ecef; }
+  .slots-io-hint {
+    margin-top: 6px;
+    font-size: 0.76rem;
+    color: #aaa;
+  }
+
+  /* ====== ダイアグラム先出し（PC・スマホ共通） ====== */
+  .left-col {
+    display: flex;
+    flex-direction: column;
+  }
+  .diagrams-area      { order: 1; }
+  .finger-legend-main { order: 2; }
+  .controls           { order: 3; margin-top: 12px; }
+
+  /* ====== Mobile (〜639px) ====== */
+  @media (max-width: 639px) {
+    .rbtn { height: 36px; min-width: 36px; font-size: 0.8rem; padding: 0 7px; }
+    .tbtn { height: 36px; padding: 5px 10px; font-size: 0.8rem; }
+    /* ダイアグラムを中央寄せ */
+    .diagrams-area { justify-content: center; }
+    /* ヘッダーバランス調整 */
+    header { gap: 18px; padding: 12px 16px; margin: -16px -16px 16px; }
+    .brand-main { font-size: 2.2rem; gap: 8px; }
+    .brand-sub2 { font-size: 1.0rem; }
+    .brand-sub1 { font-size: 0.68rem; }
+    .brand-right { border-bottom-width: 2px; }
+    /* マイコード表：スマホは2列で縦に積む */
+    .sheet-grid { grid-template-columns: repeat(2, 1fr) !important; gap: 10px; }
+    /* シートカード内のSVGをモバイル幅に合わせて縮小 */
+    .sheet-grid .sheet-card svg { width: 145px; height: auto; }
+    /* ライブラリ：スマホは2列グリッドで中央揃え */
+    .library-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 10px; }
+    .library-card { align-items: center; width: 100%; box-sizing: border-box; }
+    .library-grid .library-card svg { width: 145px; height: auto; }
+    /* ボタン4個が1行に収まらず横はみ出しするため2列に折り返す */
+    .library-card-actions { flex-wrap: wrap; justify-content: center; }
+    .library-card-btn { padding: 5px 9px; font-size: 0.74rem; }
+    .help-btn { padding: 0 9px; height: 30px; font-size: 0.75rem; }
+  }
+
+  /* 印刷専用ブランドタイトル（通常画面では非表示） */
+  .sheet-brand-print { display: none; }
+
+  /* ====== Tool Banners ====== */
+  .tools-section {
+    max-width: 900px;
+    margin: 28px auto 0;
+    padding: 0 4px;
+  }
+  .tools-title {
+    font-family: 'Oswald', sans-serif;
+    font-size: 0.85rem;
+    font-weight: 600;
+    color: #aaa;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    text-align: center;
+    margin-bottom: 14px;
+  }
+  .tools-banners {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 14px;
+  }
+  .tools-banner-link {
+    display: block;
+    width: 80%;
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.12);
+    transition: transform 0.18s, box-shadow 0.18s;
+    -webkit-tap-highlight-color: transparent;
+  }
+  .tools-banner-link:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 8px 24px rgba(0,0,0,0.18);
+  }
+  .tools-banner-link img {
+    width: 100%;
+    height: auto;
+    display: block;
+  }
+  /* PC: 2列横並び */
+  @media (min-width: 640px) {
+    .tools-banners {
+      flex-direction: row;
+      justify-content: center;
+    }
+    .tools-banner-link {
+      width: 44%;
+    }
+  }
+
+  /* ====== Print ====== */
+  @media print {
+    @page { margin: 10mm; }
+    body { background: #fff; padding: 0; }
+    header { margin: 0 !important; padding: 0 !important; background: none !important; }
+    body.print-sheet-only .tools-section,
+    body.print-sheet-only header,
+    body.print-sheet-only .controls,
+    body.print-sheet-only .diagrams-area,
+    body.print-sheet-only .finger-legend-main,
+    body.print-sheet-only .left-col,
+    body.print-sheet-only .slots-section,
+    body.print-sheet-only .library-section { display: none; }
+    body.print-sheet-only .main-layout { display: block; }
+    body.print-sheet-only .sheet-section {
+      margin-top: 0;
+    }
+    /* 画面用の見出しを印刷で非表示 */
+    body.print-sheet-only .sheet-header { margin-bottom: 6px; }
+    body.print-sheet-only .sheet-title-block,
+    body.print-sheet-only .sheet-count,
+    body.print-sheet-only .sheet-actions,
+    body.print-sheet-only .sheet-title-input { display: none; }
+
+    /* 固定ブランドタイトル（印刷専用） */
+    body.print-sheet-only .sheet-brand-print {
+      display: block;
+      text-align: center;
+      margin-bottom: 12px;
+      padding-bottom: 10px;
+      border-bottom: 4px solid #c0392b;
+      line-height: 1;
+    }
+    body.print-sheet-only .sheet-brand-print-sub {
+      display: block;
+      font-family: 'Oswald', sans-serif;
+      font-size: 0.6rem;
+      font-weight: 600;
+      color: #c0392b;
+      letter-spacing: 0.5em;
+      text-transform: uppercase;
+      margin-bottom: 5px;
+    }
+    body.print-sheet-only .sheet-brand-print-main {
+      display: block;
+      font-family: 'Oswald', sans-serif;
+      font-size: 1.8rem;
+      font-weight: 600;
+      color: #1a1a2e;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+    }
+
+    /* ユーザー入力タイトル */
+    body.print-sheet-only .sheet-print-title {
+      display: block;
+      font-family: 'Oswald', sans-serif;
+      font-size: 1.3rem;
+      font-weight: 600;
+      color: #555;
+      text-align: center;
+      letter-spacing: 0.2em;
+      margin-bottom: 10px;
+    }
+    body.print-sheet-only .sheet-grid {
+      display: grid;
+      grid-template-columns: repeat(4, auto);
+      gap: 8mm;
+      justify-content: center;
+    }
+    body.print-sheet-only .sheet-card {
+      box-shadow: none;
+      border: 1px solid #ddd;
+      page-break-inside: avoid;
+      break-inside: avoid;
+      padding: 5px 7px 7px;
+    }
+    body.print-sheet-only .sheet-card-remove { display: none; }
+    body.print-sheet-only .chord-name { font-size: 1.1rem; margin-bottom: 1px; }
+    /* 横向きモードは3列 */
+    body.print-sheet-only.horiz-mode .sheet-grid {
+      grid-template-columns: repeat(3, auto);
+    }
+    /* 13個以上はA4一枚に収まるよう縮小・4列固定 */
+    body.print-sheet-only.print-many .sheet-section {
+      zoom: 0.85;
+    }
+    body.print-sheet-only.print-many .sheet-grid {
+      grid-template-columns: repeat(4, auto) !important;
+      gap: 5mm;
+    }
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <div class="brand-wrap">
+    <div class="brand-main">
+      <svg width="24" height="50" viewBox="0 0 38 78" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <rect x="14" y="0" width="10" height="10" rx="3" fill="#fff"/>
+        <rect x="7"  y="1"  width="8" height="3" rx="1.5" fill="#fff"/>
+        <rect x="7"  y="6"  width="8" height="3" rx="1.5" fill="#fff"/>
+        <rect x="23" y="1"  width="8" height="3" rx="1.5" fill="#fff"/>
+        <rect x="23" y="6"  width="8" height="3" rx="1.5" fill="#fff"/>
+        <rect x="14" y="10" width="10" height="2"  rx="1" fill="rgba(255,255,255,0.4)"/>
+        <rect x="16" y="12" width="6"  height="24" fill="#fff"/>
+        <ellipse cx="19" cy="46" rx="12" ry="10" fill="#fff"/>
+        <ellipse cx="19" cy="62" rx="16" ry="14" fill="#fff"/>
+        <circle  cx="19" cy="60" r="5.5" fill="#1a1a2e"/>
+        <rect x="11" y="68" width="16" height="2.5" rx="1.2" fill="rgba(255,255,255,0.5)"/>
+      </svg>
+      TSG
+    </div>
+    <div class="brand-right">
+      <div class="brand-sub1">Basic（初心者向け）</div>
+      <div class="brand-sub2">Ukulele Chord Diagram</div>
+    </div>
+  </div>
+  <div style="display:flex;flex-direction:column;justify-content:space-between;align-items:flex-end;align-self:stretch;">
+    <span style="font-size:0.88rem;color:rgba(255,255,255,0.45);letter-spacing:0.08em;font-weight:500;white-space:nowrap;">【プロギタリスト監修】</span>
+    <button class="help-btn" onclick="document.getElementById('helpModal').classList.add('open')">使い方ガイド</button>
+  </div>
+</header>
+
+<!-- 共有URLモーダル -->
+<div class="modal-overlay" id="shareModal" onclick="if(event.target===this)this.classList.remove('open')">
+  <div class="modal" style="max-width:480px;">
+    <button class="modal-close" onclick="document.getElementById('shareModal').classList.remove('open')">✕</button>
+    <div class="modal-title">🔗 マイコード表をURLで共有</div>
+    <p style="font-size:0.85rem;color:#666;margin-bottom:14px;line-height:1.6;">このURLを開くと、今のマイコード表がそのまま表示されます。生徒さんに送ってチェックに使ってください。</p>
+    <input type="text" id="shareUrlInput" readonly style="width:100%;padding:10px 12px;border:1px solid #ddd;border-radius:8px;font-size:0.85rem;margin-bottom:12px;box-sizing:border-box;" onclick="this.select()">
+    <button class="share-btn" id="shareCopyBtn" style="width:100%;justify-content:center;" onclick="copyShareUrl()">📋 URLをコピー</button>
+  </div>
+</div>
+
+<!-- ユーザーセット保存モーダル -->
+<div class="modal-overlay" id="presetSaveModal" onclick="if(event.target===this)closePresetSaveModal()">
+  <div class="modal" style="max-width:420px;">
+    <button class="modal-close" onclick="closePresetSaveModal()">✕</button>
+    <div class="modal-title">📦 ユーザーセットに保存</div>
+    <p style="font-size:0.82rem;color:#888;margin-bottom:14px;line-height:1.6;">今のライブラリの内容（<span id="presetSaveCount">0</span>個）を保存します。</p>
+    <div id="presetOverwriteBlock">
+      <div class="preset-save-sub">既存のセットに上書き（タップで保存）</div>
+      <div class="preset-save-list" id="presetOverwriteList"></div>
+    </div>
+    <div class="preset-save-sub" style="margin-top:16px;">新しいセットとして保存</div>
+    <div class="preset-save-newrow">
+      <input type="text" id="presetNewName" class="preset-save-input" placeholder="セット名（例: 26-08 Basic）" maxlength="30"
+             onkeydown="if(event.key==='Enter'){event.preventDefault();saveNewLibraryPreset();}">
+      <button class="preset-save-btn" onclick="saveNewLibraryPreset()">＋ 新規保存</button>
+    </div>
+  </div>
+</div>
+
+<!-- ヘルプモーダル -->
+<div class="modal-overlay" id="helpModal" onclick="if(event.target===this)this.classList.remove('open')">
+  <div class="modal">
+    <button class="modal-close" onclick="document.getElementById('helpModal').classList.remove('open')">✕</button>
+    <div class="modal-title">💡 これ、知ってましたか？</div>
+
+    <div class="help-section">
+      <h3>⌨️ Enterキーでコード表に追加できます</h3>
+      <p>ルート音とコードタイプを選んだあと、<strong>Enterキー</strong>を押すだけでマイコード表に追加できます。いちいちボタンをクリックしなくてOKです。</p>
+    </div>
+
+    <div class="help-section">
+      <h3>🎸 ルート音は♭表記に切り替えられます</h3>
+      <p>右上の <span class="help-badge">♭</span> ボタンを押すと、C# が D♭、F# が G♭ など、フラット表記に切り替わります。楽譜に合わせて使い分けてください。</p>
+    </div>
+
+    <div class="help-section">
+      <h3>🔵 二重丸がルート音です</h3>
+      <p>ダイアグラム上で<strong>二重丸</strong>になっているドットがルート音（コードの根音）です。どの弦でルートを鳴らしているかが一目でわかります。開放弦がルートの場合も二重丸で表示されます。</p>
+    </div>
+
+    <div class="help-section">
+      <h3>🔢 指の色で押さえる指がわかります</h3>
+      <p>
+        <span style="color:#2176ae;font-weight:700;">●</span> 青 = 人差し指
+        <span style="color:#c0392b;font-weight:700;">●</span> 赤 = 中指
+        <span style="color:#27ae60;font-weight:700;">●</span> 緑 = 薬指
+        <span style="color:#e67e22;font-weight:700;">●</span> 橙 = 小指<br>
+        ドット内の数字も同じ意味です。左端に <span class="help-badge">4fr</span> などが表示されている場合はハイポジションのコードです。
+      </p>
+    </div>
+
+    <div class="help-section">
+      <h3>📋 よく使うコードをまとめて印刷できます</h3>
+      <p>「＋ コード表に追加」ボタンで気に入ったコードをストックできます（最大16個）。「コード表を印刷」でマイコード表だけを印刷・PDF保存できるので、練習メモとして活用してください。</p>
+      <p style="margin-top:8px;padding:8px 12px;background:#fff5f5;border-left:3px solid #c0392b;border-radius:0 6px 6px 0;color:#c0392b;font-weight:700;font-size:0.85rem;">🖨 印刷・PDF保存に対応しています！<br><span style="font-weight:400;color:#555;">ブラウザの印刷機能（Ctrl+P）またはページ上部の「印刷 / PDF」ボタンから出力できます。</span><br><span style="font-weight:400;color:#555;">📄 PDFで保存したい場合は、印刷ダイアログが開いたら「プリンター」の選択欄で <strong>「PDFに保存」</strong> を選んでください。スマホ・PCどちらのブラウザでも対応しています。</span></p>
+    </div>
+
+    <div class="help-section">
+      <h3>💾 コード表を保存・呼び出しできます</h3>
+      <p>画面下の「マイコード表　保存スロット」に曲名をつけて最大4曲分のコード表を保存できます。</p>
+      <ul>
+        <li><strong>保存する</strong>：今のコード表の内容をそのスロットに記憶します（ファイル不要・即時保存）</li>
+        <li><strong>呼び出す</strong>：そのスロットに記憶した内容を即座にコード表に反映します</li>
+        <li><strong>エクスポート</strong>：全スロットをファイルに書き出します。他のデバイスへの移行やバックアップに使えます</li>
+        <li><strong>インポート</strong>：エクスポートしたファイルを読み込んでスロットを復元します</li>
+      </ul>
+      <p style="margin-top:8px;font-size:0.85rem;color:#888;">※ 保存する／呼び出すはブラウザ内に記憶されるため、ブラウザのキャッシュを削除すると消えます。大切なデータはエクスポートで定期的にバックアップしてください。</p>
+    </div>
+
+    <div class="help-section">
+      <h3>🎸 オリジナルのコードフォームを自作できます</h3>
+      <p>画面下の「カスタムコード作成ライブラリ」から「＋ 新規作成」を押すと、自分だけのコードフォームを作れます。</p>
+      <ul>
+        <li>フレット盤をタップしてドットを配置、再タップで削除</li>
+        <li>指番号（①〜④）を選んでからタップすると色分けされます</li>
+        <li>弦の上のボタンで ○（開放弦）/ ×（ミュート）を切替</li>
+        <li>「開始フレット」でハイポジションのコードも作れます</li>
+        <li>保存したコードは「＋ 追加」でマイコード表に追加できます</li>
+      </ul>
+      <p style="margin-top:8px;font-size:0.85rem;color:#888;">※ 省略フォームや独自ボイシングの登録に便利です。</p>
+    </div>
+
+    <div class="help-section">
+      <h3>📐 最大16個まで追加できます</h3>
+      <p>マイコード表には最大16個までコードを追加できます。4列×4行で1画面にまとめて表示されます。</p>
+    </div>
+
+  </div>
+</div>
+
+<div class="main-layout">
+<div class="left-col">
+<!-- カスタムコードエディター -->
+<div class="modal-overlay" id="customModal" tabindex="-1" onclick="if(event.target===this)closeEditor()">
+  <div class="modal custom-modal">
+    <button class="modal-close" onclick="closeEditor()">✕</button>
+    <div class="modal-title">🎸 カスタムコードを作る</div>
+    <div class="editor-name-row">
+      <input type="text" id="editorName" class="editor-name-input" placeholder="コード名（例: Fシンプル）" maxlength="20">
+    </div>
+    <div class="editor-basefret-row" style="margin-bottom:6px;">
+      <span class="editor-label">ルート音</span>
+      <select id="editorRootNote" class="editor-select" onchange="buildEditorBoard()">
+        <option value="">なし</option>
+        <option value="C">C</option><option value="C#">C#</option>
+        <option value="D">D</option><option value="D#">D#</option>
+        <option value="E">E</option><option value="F">F</option>
+        <option value="F#">F#</option><option value="G">G</option>
+        <option value="G#">G#</option><option value="A">A</option>
+        <option value="A#">A#</option><option value="B">B</option>
+      </select>
+      <span style="font-size:0.75rem;color:#aaa;">← 二重丸の基準</span>
+    </div>
+    <div class="editor-basefret-row">
+      <span class="editor-label">開始フレット</span>
+      <select id="editorBaseFret" class="editor-select" onchange="editorRedraw()">
+        <option value="1">1fr</option><option value="2">2fr</option><option value="3">3fr</option>
+        <option value="4">4fr</option><option value="5">5fr</option><option value="6">6fr</option>
+        <option value="7">7fr</option><option value="8">8fr</option><option value="9">9fr</option>
+        <option value="10">10fr</option><option value="11">11fr</option><option value="12">12fr</option>
+      </select>
+    </div>
+    <div class="editor-finger-row">
+      <span class="editor-label">指番号</span>
+      <div class="editor-fingers" id="editorFingers"></div>
+    </div>
+    <div class="editor-board-wrap">
+      <div class="editor-string-heads" id="editorHeads"></div>
+      <div class="editor-board" id="editorBoard"></div>
+    </div>
+    <div class="editor-hint">タップ: ドット配置 ／ 再タップ: 削除 ／ 弦の上: ○×切替</div>
+    <div class="editor-actions">
+      <button class="editor-save-btn" onclick="saveToLibrary()">💾 ライブラリに保存</button>
+      <button class="editor-cancel-btn" onclick="closeEditor()">キャンセル</button>
+    </div>
+  </div>
+</div>
+
+<div class="controls">
+  <div class="ctrl-row">
+    <span class="ctrl-label">ルート音</span>
+    <div class="btn-group" id="rootBtns"></div>
+  </div>
+  <div class="ctrl-row group-sep">
+    <div class="btn-group">
+      <button class="tbtn active" id="sharpBtn" onclick="setFlat(false)">♯ で表示</button>
+      <button class="tbtn" id="flatBtn" onclick="setFlat(true)">♭ で表示</button>
+    </div>
+    <span style="color:#ddd;margin:0 6px;font-size:1.1rem;line-height:1;align-self:center;">|</span>
+    <div class="btn-group">
+      <button class="tbtn active" id="horizBtn" onclick="setOrientation(true)">横向き</button>
+      <button class="tbtn" id="vertBtn" onclick="setOrientation(false)">縦向き</button>
+    </div>
+  </div>
+  <div class="ctrl-row group-sep">
+    <span class="ctrl-label">コードタイプ</span>
+    <div class="btn-group" id="typeBtns"></div>
+  </div>
+  <div class="ctrl-row group-sep">
+    <span class="ctrl-label">ドット表示</span>
+    <div class="btn-group" id="dotDisplayBtns"></div>
+  </div>
+</div>
+
+<div class="diagrams-area" id="diagramsArea">
+  <div class="no-chord">ルート音とコードタイプを選んでください</div>
+</div>
+
+<div class="finger-legend finger-legend-main">
+  <span><span class="legend-dot" style="background:#2176ae"></span> 人差し指（1）</span>
+  <span><span class="legend-dot" style="background:#c0392b"></span> 中指（2）</span>
+  <span><span class="legend-dot" style="background:#27ae60"></span> 薬指（3）</span>
+  <span><span class="legend-dot" style="background:#e67e22"></span> 小指（4）</span>
+</div>
+</div><!-- /left-col -->
+
+<!-- マイコード表 -->
+<div class="sheet-section" id="sheetSection">
+  <div class="sheet-header">
+    <div style="display:flex;align-items:center;gap:12px;flex-wrap:wrap;">
+      <div class="sheet-title-block">
+        <span class="sheet-title-en">My Chord Chart</span>
+        <span class="sheet-title">マイコード表<span class="sheet-count" id="sheetCount">0 / 16</span></span>
+      </div>
+      <input type="text" id="sheetTitleInput" class="sheet-title-input" placeholder="タイトルを入力（印刷に反映）" maxlength="40">
+    </div>
+    <div class="sheet-actions">
+      <button class="clear-btn" onclick="clearSheet()">🗑 コード全消去</button>
+      <button class="share-btn" onclick="shareSheetURL()">🔗 URLで共有</button>
+      <button class="print-btn" onclick="printSheet()">🖨 コード表を印刷</button>
+    </div>
+  </div>
+  <!-- 印刷専用: 固定ブランドタイトル -->
+  <div class="sheet-brand-print">
+    <span class="sheet-brand-print-sub">TSG Guitar Tools</span>
+    <span class="sheet-brand-print-main">TSG Ukulele Chord Diagram</span>
+    <span class="sheet-brand-print-date" id="sheetPrintDate"></span>
+  </div>
+  <!-- 印刷専用: ユーザー入力タイトル -->
+  <div class="sheet-print-title" id="sheetPrintTitle"></div>
+  <div class="sheet-grid" id="sheetGrid">
+    <div class="sheet-empty">コードを選んで「コード表に追加」を押してください（最大16個）</div>
+  </div>
+  <div class="slots-io" id="sheetJsonIo">
+    <button class="slot-io-btn" onclick="exportSheetJSON()">📤 コード表をJSONで保存</button>
+    <label class="slot-io-btn" style="cursor:pointer;">
+      📥 JSONを読み込み
+      <input type="file" accept=".json" style="display:none" onchange="importSheetJSON(event)">
+    </label>
+  </div>
+  <div class="slots-io-hint" id="sheetJsonIoHint">URL共有はその場で開いて確認、JSONはファイルでの受け渡し用です</div>
+  <!-- 保存スロット -->
+  <div class="slots-section" id="slotsSection">
+    <div class="slots-title">💾 マイコード表　保存スロット</div>
+    <div id="slotRows"></div>
+    <div class="slots-io">
+      <button class="slot-io-btn" onclick="exportSlots()">📤 全スロットをエクスポート</button>
+      <label class="slot-io-btn" style="cursor:pointer;">
+        📥 インポート
+        <input type="file" accept=".json" style="display:none" onchange="importSlots(event)">
+      </label>
+    </div>
+    <div class="slots-io-hint">ファイルに書き出して他のデバイスへの移行やバックアップができます</div>
+  </div>
+
+  <!-- カスタムコード作成ライブラリ -->
+  <div class="library-section" id="librarySection">
+    <div class="library-header">
+      <span class="slots-title" style="margin:0;">🎸 カスタムコード作成ライブラリ</span>
+      <button class="library-new-btn" onclick="openEditor(null)">＋ 新規作成</button>
+    </div>
+    <!-- プリセット読み込み -->
+    <div class="sheet-preset-row">
+      <span class="sheet-preset-label">📦 プリセット</span>
+      <select class="sheet-preset-select" id="libraryPresetSelect"></select>
+      <button class="sheet-preset-load-btn" id="libraryPresetLoadBtn" onclick="loadLibraryPreset()">読み込む</button>
+      <button class="slot-io-btn" id="libraryPresetSaveBtn" onclick="saveLibraryAsPreset()">＋ 保存</button>
+      <button class="slot-io-btn" id="libraryPresetDeleteBtn" onclick="deleteLibraryPreset()">🗑 削除</button>
+    </div>
+    <div class="library-empty" id="libraryEmpty">作成したカスタムコードがここに表示されます</div>
+    <div class="library-grid" id="libraryGrid"></div>
+    <div class="slots-io">
+      <button class="slot-io-btn" onclick="exportLibrary()">📤 ライブラリをエクスポート</button>
+      <label class="slot-io-btn" style="cursor:pointer;">
+        📥 インポート
+        <input type="file" accept=".json" style="display:none" onchange="importLibrary(event)">
+      </label>
+    </div>
+    <div class="slots-io-hint">ファイルに書き出して他のデバイスへの移行やバックアップができます</div>
+  </div>
+
+</div><!-- /sheet-section -->
+</div><!-- /main-layout -->
+
+<!-- TSG Guitar Tools バナー -->
+<div class="tools-section">
+  <div class="tools-title">TSG Guitar Tools</div>
+  <div class="tools-banners">
+    <a class="tools-banner-link" href="https://scale.tsg-gt.com">
+      <img src="images/banner-scale.png" alt="TSG Guitar Scale Viewer">
+    </a>
+    <a class="tools-banner-link" href="https://metrotuner.tsg-gt.com">
+      <img src="images/banner-metroluner.png" alt="TSG Metronome & Tuner">
+    </a>
+  </div>
+</div>
+
+<script>
+// ===== コードデータ（ウクレレ / High-G: G-C-E-A） =====
+// 各コード: { frets: [4弦G,3弦C,2弦E,1弦A], fingers: [同順], baseFret: 1, label: "ポジション名" }
+// frets: -1=ミュート, 0=開放弦, 1以上=フレット番号(baseFret基準の相対値)
+// fingers: 0=なし, 1=人差し指, 2=中指, 3=薬指, 4=小指
+//
+// 【フェーズ1・暫定データ】major / m / 7 の36フォームのみ収録。
+// 残り9タイプ（maj7 / m7 / dim / m7b5 / aug / sus4 / 7sus4 / 6 / add9）×12ルート＝108フォームは
+// フェーズ2で参照表と1個ずつ突き合わせて追加する。
+
+const CHORDS = {
+  "C": {
+    "major": [
+      { label: "ローコード", frets: [0, 0, 0, 3], fingers: [0, 0, 0, 3], baseFret: 1 }
+    ],
+    "m": [
+      { label: "バレーコード", frets: [0, 3, 3, 3], fingers: [0, 1, 1, 1], baseFret: 1 }
+    ],
+    "7": [
+      { label: "ローコード", frets: [0, 0, 0, 1], fingers: [0, 0, 0, 1], baseFret: 1 }
+    ]
+  },
+  "C#": {
+    "major": [
+      { label: "バレーコード", frets: [1, 1, 1, 4], fingers: [1, 1, 1, 4], baseFret: 1 }
+    ],
+    "m": [
+      { label: "ローコード", frets: [1, 1, 0, 4], fingers: [1, 1, 0, 4], baseFret: 1 }
+    ],
+    "7": [
+      { label: "バレーコード", frets: [1, 1, 1, 2], fingers: [1, 1, 1, 2], baseFret: 1 }
+    ]
+  },
+  "D": {
+    "major": [
+      { label: "ローコード", frets: [2, 2, 2, 0], fingers: [1, 2, 3, 0], baseFret: 1 }
+    ],
+    "m": [
+      { label: "ローコード", frets: [2, 2, 1, 0], fingers: [2, 3, 1, 0], baseFret: 1 }
+    ],
+    "7": [
+      { label: "バレーコード", frets: [2, 2, 2, 3], fingers: [1, 1, 1, 3], baseFret: 1 }
+    ]
+  },
+  "D#": {
+    "major": [
+      { label: "バレーコード", frets: [3, 3, 3, 1], fingers: [2, 3, 4, 1], baseFret: 1 }
+    ],
+    "m": [
+      { label: "バレーコード", frets: [3, 3, 2, 1], fingers: [3, 4, 2, 1], baseFret: 1 }
+    ],
+    "7": [
+      { label: "バレーコード", frets: [3, 3, 3, 4], fingers: [1, 1, 1, 3], baseFret: 1 }
+    ]
+  },
+  "E": {
+    "major": [
+      { label: "バレーコード", frets: [4, 4, 4, 2], fingers: [2, 3, 4, 1], baseFret: 1 }
+    ],
+    "m": [
+      { label: "ローコード", frets: [0, 4, 3, 2], fingers: [0, 4, 3, 2], baseFret: 1 }
+    ],
+    "7": [
+      { label: "ローコード", frets: [1, 2, 0, 2], fingers: [1, 2, 0, 3], baseFret: 1 }
+    ]
+  },
+  "F": {
+    "major": [
+      { label: "ローコード", frets: [2, 0, 1, 0], fingers: [2, 0, 1, 0], baseFret: 1 }
+    ],
+    "m": [
+      { label: "ローコード", frets: [1, 0, 1, 3], fingers: [1, 0, 1, 3], baseFret: 1 }
+    ],
+    "7": [
+      { label: "ローコード", frets: [2, 3, 1, 0], fingers: [2, 3, 1, 0], baseFret: 1 }
+    ]
+  },
+  "F#": {
+    "major": [
+      { label: "ローコード", frets: [3, 1, 2, 1], fingers: [3, 1, 2, 1], baseFret: 1 }
+    ],
+    "m": [
+      { label: "ローコード", frets: [2, 1, 2, 0], fingers: [2, 1, 3, 0], baseFret: 1 }
+    ],
+    "7": [
+      { label: "バレーコード", frets: [3, 4, 2, 4], fingers: [2, 3, 1, 4], baseFret: 1 }
+    ]
+  },
+  "G": {
+    "major": [
+      { label: "ローコード", frets: [0, 2, 3, 2], fingers: [0, 1, 3, 2], baseFret: 1 }
+    ],
+    "m": [
+      { label: "ローコード", frets: [0, 2, 3, 1], fingers: [0, 2, 3, 1], baseFret: 1 }
+    ],
+    "7": [
+      { label: "ローコード", frets: [0, 2, 1, 2], fingers: [0, 2, 1, 3], baseFret: 1 }
+    ]
+  },
+  "G#": {
+    "major": [
+      { label: "バレーコード", frets: [5, 3, 4, 3], fingers: [4, 1, 2, 1], baseFret: 1 }
+    ],
+    "m": [
+      { label: "バレーコード", frets: [4, 3, 4, 2], fingers: [3, 2, 4, 1], baseFret: 1 }
+    ],
+    "7": [
+      { label: "バレーコード", frets: [1, 3, 2, 3], fingers: [1, 3, 2, 4], baseFret: 1 }
+    ]
+  },
+  "A": {
+    "major": [
+      { label: "ローコード", frets: [2, 1, 0, 0], fingers: [2, 1, 0, 0], baseFret: 1 }
+    ],
+    "m": [
+      { label: "ローコード", frets: [2, 0, 0, 0], fingers: [2, 0, 0, 0], baseFret: 1 }
+    ],
+    "7": [
+      { label: "ローコード", frets: [0, 1, 0, 0], fingers: [0, 1, 0, 0], baseFret: 1 }
+    ]
+  },
+  "A#": {
+    "major": [
+      { label: "バレーコード", frets: [3, 2, 1, 1], fingers: [3, 2, 1, 1], baseFret: 1 }
+    ],
+    "m": [
+      { label: "バレーコード", frets: [3, 1, 1, 1], fingers: [3, 1, 1, 1], baseFret: 1 }
+    ],
+    "7": [
+      { label: "バレーコード", frets: [1, 2, 1, 1], fingers: [1, 2, 1, 1], baseFret: 1 }
+    ]
+  },
+  "B": {
+    "major": [
+      { label: "バレーコード", frets: [4, 3, 2, 2], fingers: [4, 3, 1, 1], baseFret: 1 }
+    ],
+    "m": [
+      { label: "バレーコード", frets: [4, 2, 2, 2], fingers: [3, 1, 1, 1], baseFret: 1 }
+    ],
+    "7": [
+      { label: "バレーコード", frets: [2, 3, 2, 2], fingers: [1, 2, 1, 1], baseFret: 1 }
+    ]
+  }
+};
+
+const ROOTS = ["C","C#","D","D#","E","F","F#","G","G#","A","A#","B"];
+const TYPES = [
+  { key: "major",  label: "major",  chordLabel: ""      },
+  { key: "m",      label: "minor",  chordLabel: "m"     },
+  { key: "7",      label: "7",      chordLabel: "7"     },
+  { key: "maj7",   label: "maj7",   chordLabel: "maj7"  },
+  { key: "m7",     label: "m7",     chordLabel: "m7"    },
+  { key: "dim",    label: "dim",    chordLabel: "dim"   },
+  { key: "m7b5",   label: "m7♭5",  chordLabel: "m7♭5" },
+  { key: "aug",    label: "aug",    chordLabel: "aug"   },
+  { key: "sus4",   label: "sus4",   chordLabel: "sus4"  },
+  { key: "7sus4",  label: "7sus4",  chordLabel: "7sus4" },
+  { key: "6",      label: "6",      chordLabel: "6"     },
+  { key: "add9",   label: "add9",   chordLabel: "add9"  }
+];
+
+const FLAT_NAMES = { "C#":"D♭", "D#":"E♭", "F#":"G♭", "G#":"A♭", "A#":"B♭" };
+const PREF_KEY = 'tsg-uk-chord-prefs';
+function loadPrefs() {
+  try { return JSON.parse(localStorage.getItem(PREF_KEY)) || {}; } catch { return {}; }
+}
+function savePrefs() {
+  localStorage.setItem(PREF_KEY, JSON.stringify({ useFlat, useHorizontal, dotDisplay }));
+}
+const _prefs = loadPrefs();
+let useFlat       = _prefs.useFlat       ?? false;
+let useHorizontal = _prefs.useHorizontal ?? true;
+
+// ドット表示モード
+let dotDisplay = _prefs.dotDisplay ?? 'finger'; // 'finger' | 'note' | 'degree' | 'doremi'
+const DOT_DISPLAY_OPTIONS = [
+  { key: 'finger', label: '指番号' },
+  { key: 'note',   label: '音名'   },
+  { key: 'degree', label: '度数'   },
+  { key: 'doremi', label: 'ドレミ' },
+];
+const NOTE_NAMES_SHARP = ['C','C#','D','D#','E','F','F#','G','G#','A','A#','B'];
+const NOTE_NAMES_FLAT  = ['C','D♭','D','E♭','E','F','G♭','G','A♭','A','B♭','B'];
+const DOREMI_NAMES       = ['ド','ド#','レ','レ#','ミ','ファ','ファ#','ソ','ソ#','ラ','ラ#','シ'];
+const DOREMI_NAMES_FLAT  = ['ド','レ♭','レ','ミ♭','ミ','ファ','ソ♭','ソ','ラ♭','ラ','シ♭','シ'];
+const DEGREE_NAMES     = ['R','♭2','2','♭3','3','4','♭5','5','♭6','6','♭7','7'];
+
+function getDotLabel(stringIdx, fret, baseFret, finger, rootSemitone) {
+  if (dotDisplay === 'finger') return finger > 0 ? String(finger) : '';
+  const raw = fret === 0
+    ? OPEN_STRINGS[stringIdx]
+    : OPEN_STRINGS[stringIdx] + (baseFret - 1) + fret;
+  const pitch = ((raw % 12) + 12) % 12;
+  if (dotDisplay === 'note')   return (useFlat ? NOTE_NAMES_FLAT : NOTE_NAMES_SHARP)[pitch];
+  if (dotDisplay === 'doremi') return (useFlat ? DOREMI_NAMES_FLAT : DOREMI_NAMES)[pitch];
+  if (dotDisplay === 'degree') {
+    if (rootSemitone == null) return (useFlat ? NOTE_NAMES_FLAT : NOTE_NAMES_SHARP)[pitch];
+    return DEGREE_NAMES[((pitch - rootSemitone) % 12 + 12) % 12];
+  }
+  return '';
+}
+
+const FINGER_COLORS = ["", "#2176ae", "#c0392b", "#27ae60", "#e67e22"];
+
+// ルート音検出用
+const ROOT_SEMITONES = { C:0, "C#":1, D:2, "D#":3, E:4, F:5, "F#":6, G:7, "G#":8, A:9, "A#":10, B:11 };
+const OPEN_STRINGS = [7, 0, 4, 9]; // 4弦〜1弦: G, C, E, A（ウクレレ標準）
+
+let selectedRoot = null;
+let selectedType = null;
+let myChords = [];
+
+// ===== 音源（Karplus-Strong 撥弦音） =====
+// ウクレレ開放弦のMIDI番号（4弦〜1弦）
+// High-G（再入弦）：4弦Gが3弦Cより高い。Low-Gにする場合は先頭を 55 に変えるだけでよい
+const OPEN_MIDI = [67, 60, 64, 69]; // G4, C4, E4, A4
+
+let audioCtx = null;
+let chordPlayTimeout = null;
+
+function midiToFreq(midi) {
+  return 440 * Math.pow(2, (midi - 69) / 12);
+}
+
+function pluckNote(freq, startTime) {
+  const sampleRate = audioCtx.sampleRate;
+  const duration = 5.0;
+  const totalSamples = Math.floor(sampleRate * duration);
+  const delayLen = Math.max(2, Math.round(sampleRate / freq));
+
+  const delayLine = new Float32Array(delayLen);
+  for (let i = 0; i < delayLen; i++) delayLine[i] = Math.random() * 2 - 1;
+
+  const output = new Float32Array(totalSamples);
+  let pos = 0;
+  for (let i = 0; i < totalSamples; i++) {
+    const next = (pos + 1) % delayLen;
+    output[i] = delayLine[pos];
+    delayLine[pos] = (delayLine[pos] + delayLine[next]) * 0.4992;
+    pos = next;
+  }
+
+  const buf = audioCtx.createBuffer(1, totalSamples, sampleRate);
+  buf.getChannelData(0).set(output);
+
+  const src = audioCtx.createBufferSource();
+  src.buffer = buf;
+
+  const gain = audioCtx.createGain();
+  gain.gain.setValueAtTime(0.7, startTime);
+  gain.gain.exponentialRampToValueAtTime(0.0001, startTime + duration);
+
+  src.connect(gain);
+  gain.connect(audioCtx.destination);
+  src.start(startTime);
+  src.stop(startTime + duration);
+}
+
+function playChord(chord) {
+  stopChord();
+  if (!audioCtx) audioCtx = new (window.AudioContext || window.webkitAudioContext)();
+  if (audioCtx.state === 'suspended') audioCtx.resume();
+
+  const { frets, baseFret } = chord;
+  const interval = 0.18; // 弦と弦の間隔（秒）
+  const now = audioCtx.currentTime + 0.05;
+
+  let idx = 0;
+  frets.forEach((fret, i) => {
+    if (fret === -1) return; // ミュート弦はスキップ
+    const midi = fret === 0
+      ? OPEN_MIDI[i]
+      : OPEN_MIDI[i] + (baseFret - 1) + fret;
+    pluckNote(midiToFreq(midi), now + idx * interval);
+    idx++;
+  });
+
+  // 再生終了後にボタンをリセット
+  const totalMs = (idx * interval + 5.0) * 1000;
+  chordPlayTimeout = setTimeout(() => {
+    const btn = document.getElementById('chordPlayBtn');
+    if (btn) { btn.innerHTML = '▶<span class="play-label">再生</span>'; btn.dataset.playing = ''; }
+  }, totalMs);
+
+  const btn = document.getElementById('chordPlayBtn');
+  if (btn) { btn.innerHTML = '■<span class="play-label">停止</span>'; btn.dataset.playing = '1'; }
+}
+
+function stopChord() {
+  if (chordPlayTimeout) { clearTimeout(chordPlayTimeout); chordPlayTimeout = null; }
+  if (audioCtx) { audioCtx.close(); audioCtx = null; }
+  const btn = document.getElementById('chordPlayBtn');
+  if (btn) { btn.innerHTML = '▶<span class="play-label">再生</span>'; btn.dataset.playing = ''; }
+}
+
+// ===== マイライブラリ =====
+const LIBRARY_KEY = 'tsg-uk-custom-library';
+const FINGER_COLORS_EDITOR = ['', '#2176ae','#c0392b','#27ae60','#e67e22'];
+
+let library = [];
+try { library = JSON.parse(localStorage.getItem(LIBRARY_KEY)) || []; } catch { library = []; }
+
+function saveLibrary() {
+  localStorage.setItem(LIBRARY_KEY, JSON.stringify(library));
+}
+
+// ===== ライブラリプリセット =====
+// ================================================================
+// 各コードの形式: { name: "表示名（コード名）", rootNote: ルート音('C'等),
+//   frets: [4弦→1弦の押弦位置（-1=ミュート,0=開放,1以上=フレット）],
+//   fingers: [同順の指番号（0=指なし,1〜4）], baseFret: 基準フレット(通常1) }
+// 固定プリセット追加時はこの配列に新しいオブジェクトを足すだけでOK
+const CHORD_PRESETS = [
+  // フェーズ1では固定プリセットなし。ウクレレ用の良質なセットはアプリ完成後に別途追加する。
+];
+
+// ユーザーが保存したライブラリセット（localStorage）
+const LIBRARY_PRESET_KEY = 'tsg-uk-chord-library-user-presets';
+let libraryUserPresets = [];
+try { libraryUserPresets = JSON.parse(localStorage.getItem(LIBRARY_PRESET_KEY)) || []; } catch { libraryUserPresets = []; }
+
+function saveLibraryUserPresets() {
+  localStorage.setItem(LIBRARY_PRESET_KEY, JSON.stringify(libraryUserPresets));
+}
+
+function buildLibraryPresetSelect() {
+  const sel = document.getElementById('libraryPresetSelect');
+  if (!sel) return;
+  sel.innerHTML = '';
+
+  const builtinGroup = document.createElement('optgroup');
+  builtinGroup.label = 'プリセット';
+  CHORD_PRESETS.forEach((preset, i) => {
+    const o = document.createElement('option');
+    o.value = `builtin:${i}`;
+    o.textContent = `${preset.label}（${preset.chords.length}個）`;
+    builtinGroup.appendChild(o);
+  });
+  sel.appendChild(builtinGroup);
+
+  if (libraryUserPresets.length > 0) {
+    const userGroup = document.createElement('optgroup');
+    userGroup.label = 'ユーザーセット';
+    libraryUserPresets.forEach((preset, i) => {
+      const o = document.createElement('option');
+      o.value = `user:${i}`;
+      o.textContent = `${preset.label}（${preset.chords.length}個）`;
+      userGroup.appendChild(o);
+    });
+    sel.appendChild(userGroup);
+  }
+}
+
+function getSelectedLibraryPreset() {
+  const sel = document.getElementById('libraryPresetSelect');
+  const [kind, idxStr] = (sel.value || '').split(':');
+  const idx = parseInt(idxStr);
+  if (kind === 'builtin') return CHORD_PRESETS[idx];
+  if (kind === 'user') return libraryUserPresets[idx];
+  return null;
+}
+
+function loadLibraryPreset() {
+  const preset = getSelectedLibraryPreset();
+  if (!preset) return;
+  if (library.length > 0 && !confirm(`「${preset.label}」を読み込みます。現在のライブラリは上書きされます。よろしいですか？`)) return;
+  library = preset.chords.map(c => ({
+    id: Date.now() + Math.random(),
+    name: c.name,
+    frets: [...c.frets],
+    fingers: [...c.fingers],
+    baseFret: c.baseFret,
+    rootNote: c.rootNote || '',
+    label: c.name
+  }));
+  saveLibrary();
+  renderLibrary();
+}
+
+// 「＋ 保存」→ 既存ユーザーセット一覧（タップで上書き）＋新規保存欄のモーダルを開く
+function saveLibraryAsPreset() {
+  if (library.length === 0) { alert('ライブラリが空です。'); return; }
+  document.getElementById('presetSaveCount').textContent = library.length;
+
+  const list = document.getElementById('presetOverwriteList');
+  list.innerHTML = '';
+  libraryUserPresets.forEach((preset, i) => {
+    const btn = document.createElement('button');
+    btn.className = 'preset-save-item';
+    const nameEl = document.createElement('span');
+    nameEl.textContent = preset.label;           // textContentで安全に挿入
+    const cntEl = document.createElement('span');
+    cntEl.className = 'cnt';
+    cntEl.textContent = `現在${preset.chords.length}個 → 上書き`;
+    btn.appendChild(nameEl);
+    btn.appendChild(cntEl);
+    btn.onclick = () => overwriteLibraryPreset(i);
+    list.appendChild(btn);
+  });
+  // ユーザーセットが1つも無ければ上書き欄は隠す
+  document.getElementById('presetOverwriteBlock').style.display = libraryUserPresets.length > 0 ? '' : 'none';
+
+  const input = document.getElementById('presetNewName');
+  input.value = '';
+  document.getElementById('presetSaveModal').classList.add('open');
+  setTimeout(() => input.focus(), 50);
+}
+
+function closePresetSaveModal() {
+  document.getElementById('presetSaveModal').classList.remove('open');
+}
+
+// 現在のライブラリをプリセット保存用の形に変換
+function currentLibraryAsPresetChords() {
+  return library.map(item => ({
+    name: item.name, rootNote: item.rootNote, frets: item.frets, fingers: item.fingers, baseFret: item.baseFret
+  }));
+}
+
+function overwriteLibraryPreset(idx) {
+  const preset = libraryUserPresets[idx];
+  if (!preset) return;
+  if (!confirm(`ユーザーセット「${preset.label}」を、今のライブラリ（${library.length}個）で上書き保存しますか？`)) return;
+  libraryUserPresets[idx] = { label: preset.label, chords: currentLibraryAsPresetChords() };
+  finishLibraryPresetSave(idx, `「${preset.label}」を上書き保存しました！`);
+}
+
+function saveNewLibraryPreset() {
+  const input = document.getElementById('presetNewName');
+  const name = (input.value || '').trim();
+  if (!name) { alert('セット名を入力してください。'); input.focus(); return; }
+  const existIdx = libraryUserPresets.findIndex(p => p.label === name);
+  if (existIdx >= 0) {
+    if (!confirm(`同じ名前のユーザーセット「${name}」があります。上書き保存しますか？`)) return;
+    libraryUserPresets[existIdx] = { label: name, chords: currentLibraryAsPresetChords() };
+    finishLibraryPresetSave(existIdx, `「${name}」を上書き保存しました！`);
+    return;
+  }
+  libraryUserPresets.push({ label: name, chords: currentLibraryAsPresetChords() });
+  finishLibraryPresetSave(libraryUserPresets.length - 1, `「${name}」として保存しました！`);
+}
+
+function finishLibraryPresetSave(idx, message) {
+  saveLibraryUserPresets();
+  buildLibraryPresetSelect();
+  const sel = document.getElementById('libraryPresetSelect');
+  if (sel) sel.value = `user:${idx}`;   // 保存したセットを選択状態にしておく
+  closePresetSaveModal();
+  alert(message);
+}
+
+function deleteLibraryPreset() {
+  const sel = document.getElementById('libraryPresetSelect');
+  const [kind, idxStr] = (sel.value || '').split(':');
+  if (kind !== 'user') { alert('プリセット（固定セット）は削除できません。ユーザーセットのみ削除できます。'); return; }
+  const idx = parseInt(idxStr);
+  const preset = libraryUserPresets[idx];
+  if (!preset) return;
+  if (!confirm(`「${preset.label}」を削除しますか？`)) return;
+  libraryUserPresets.splice(idx, 1);
+  saveLibraryUserPresets();
+  buildLibraryPresetSelect();
+}
+
+function renderLibrary() {
+  const grid = document.getElementById('libraryGrid');
+  const empty = document.getElementById('libraryEmpty');
+  grid.innerHTML = '';
+  if (library.length === 0) { empty.style.display = ''; return; }
+  empty.style.display = 'none';
+
+  let dragSrcIdx = null;
+
+  library.forEach((item, idx) => {
+    const card = document.createElement('div');
+    card.className = 'library-card';
+    card.draggable = true;
+
+    // ドラッグ開始
+    card.addEventListener('dragstart', (e) => {
+      dragSrcIdx = idx;
+      card.classList.add('dragging');
+      e.dataTransfer.effectAllowed = 'move';
+    });
+    card.addEventListener('dragend', () => {
+      card.classList.remove('dragging');
+      grid.querySelectorAll('.library-card').forEach(c => c.classList.remove('drag-over'));
+    });
+
+    // ドロップ先
+    card.addEventListener('dragover', (e) => {
+      e.preventDefault();
+      e.dataTransfer.dropEffect = 'move';
+      grid.querySelectorAll('.library-card').forEach(c => c.classList.remove('drag-over'));
+      card.classList.add('drag-over');
+    });
+    card.addEventListener('dragleave', () => card.classList.remove('drag-over'));
+    card.addEventListener('drop', (e) => {
+      e.preventDefault();
+      if (dragSrcIdx === null || dragSrcIdx === idx) return;
+      const moved = library.splice(dragSrcIdx, 1)[0];
+      library.splice(idx, 0, moved);
+      dragSrcIdx = null;
+      saveLibrary();
+      renderLibrary();
+    });
+
+    const nameEl = document.createElement('div');
+    nameEl.className = 'library-card-name';
+    nameEl.textContent = item.name || 'カスタム';
+    card.appendChild(nameEl);
+
+    card.appendChild(drawDiagramH(item, item.rootNote || null, true));
+
+    const actions = document.createElement('div');
+    actions.className = 'library-card-actions';
+
+    const addBtn = document.createElement('button');
+    addBtn.className = 'library-card-btn add';
+    addBtn.textContent = '+ 追加';
+    addBtn.onclick = () => addToSheet(item.rootNote || null, null, item, item.name || 'カスタム');
+    actions.appendChild(addBtn);
+
+    const editBtn = document.createElement('button');
+    editBtn.className = 'library-card-btn edit';
+    editBtn.textContent = '編集';
+    editBtn.onclick = () => openEditor(idx);
+    actions.appendChild(editBtn);
+
+    const dupeBtn = document.createElement('button');
+    dupeBtn.className = 'library-card-btn dupe';
+    dupeBtn.textContent = '複製';
+    dupeBtn.onclick = () => {
+      const copy = JSON.parse(JSON.stringify(item));
+      copy.name = (copy.name || 'カスタム') + ' のコピー';
+      library.push(copy);
+      saveLibrary();
+      renderLibrary();
+      // 複製したものをそのままエディターで開く
+      openEditor(library.length - 1);
+    };
+    actions.appendChild(dupeBtn);
+
+    const delBtn = document.createElement('button');
+    delBtn.className = 'library-card-btn del';
+    delBtn.textContent = '削除';
+    delBtn.onclick = () => {
+      if (!confirm(`「${item.name || 'カスタム'}」を削除しますか？`)) return;
+      library.splice(idx, 1);
+      saveLibrary();
+      renderLibrary();
+    };
+    actions.appendChild(delBtn);
+
+    card.appendChild(actions);
+    grid.appendChild(card);
+  });
+}
+
+function exportLibrary() {
+  const json = JSON.stringify(library, null, 2);
+  downloadJSON(json, `tsg-custom-library-${new Date().toISOString().slice(0,10)}.json`);
+}
+
+// JSON文字列をファイルとしてダウンロードさせる（Blob URLは使用後に解放）
+function downloadJSON(json, filename) {
+  const blob = new Blob([json], { type: 'application/json' });
+  const url = URL.createObjectURL(blob);
+  const a = document.createElement('a');
+  a.href = url;
+  a.download = filename;
+  a.click();
+  setTimeout(() => URL.revokeObjectURL(url), 1000);
+}
+
+function importLibrary(event) {
+  const file = event.target.files[0];
+  if (!file) return;
+  const reader = new FileReader();
+  reader.onload = (e) => {
+    try {
+      const data = JSON.parse(e.target.result);
+      if (!Array.isArray(data)) throw new Error();
+      const clean = sanitizeLibraryChords(data);
+      if (data.length > 0 && clean.length === 0) throw new Error(); // 要素はあるが全て壊れている
+      if (!confirm('インポートするとライブラリが上書きされます。よろしいですか？')) return;
+      library = clean;
+      saveLibrary();
+      renderLibrary();
+      alert('インポート完了しました！');
+    } catch {
+      alert('ファイルの形式が正しくありません。');
+    }
+  };
+  reader.readAsText(file);
+  event.target.value = '';
+}
+
+// ===== エディター =====
+let edState = { frets: [-1,-1,-1,-1], fingers: [0,0,0,0], baseFret: 1, finger: 1, editIdx: null, rootNote: '' };
+
+function openEditor(idx) {
+  if (idx !== null && library[idx]) {
+    const item = library[idx];
+    edState = {
+      frets: [...item.frets],
+      fingers: [...item.fingers],
+      baseFret: item.baseFret || 1,
+      finger: 1,
+      editIdx: idx,
+      rootNote: item.rootNote || ''
+    };
+    document.getElementById('editorName').value = item.name || '';
+  } else {
+    edState = { frets: [-1,-1,-1,-1], fingers: [0,0,0,0], baseFret: 1, finger: 1, editIdx: null, rootNote: '' };
+    document.getElementById('editorName').value = '';
+  }
+  document.getElementById('editorBaseFret').value = edState.baseFret;
+  document.getElementById('editorRootNote').value = edState.rootNote;
+  buildEditorFingers();
+  buildEditorBoard();
+  const modal = document.getElementById('customModal');
+  modal.classList.add('open');
+  setTimeout(() => modal.focus(), 50);
+}
+
+function closeEditor() {
+  document.getElementById('customModal').classList.remove('open');
+}
+
+function editorRedraw() {
+  edState.baseFret = parseInt(document.getElementById('editorBaseFret').value);
+  buildEditorBoard();
+}
+
+function buildEditorFingers() {
+  const container = document.getElementById('editorFingers');
+  container.innerHTML = '';
+  for (let f = 1; f <= 4; f++) {
+    const btn = document.createElement('button');
+    btn.className = 'editor-finger-btn' + (edState.finger === f ? ' active' : '');
+    btn.style.background = FINGER_COLORS_EDITOR[f];
+    btn.textContent = f;
+    btn.onclick = () => {
+      edState.finger = f;
+      buildEditorFingers();
+    };
+    container.appendChild(btn);
+  }
+}
+
+function buildEditorBoard() {
+  const wrap  = document.querySelector('.editor-board-wrap');
+  const heads = document.getElementById('editorHeads');
+  const board = document.getElementById('editorBoard');
+  heads.innerHTML = '';
+  board.innerHTML = '';
+
+  // ルート音によるハイライト判定
+  const edRootVal = document.getElementById('editorRootNote')?.value || '';
+  const edRootSemitone = edRootVal ? ROOT_SEMITONES[edRootVal] : null;
+
+  function isRoot(s, fretNum) {
+    if (edRootSemitone == null || fretNum === -1) return false;
+    const raw = fretNum === 0
+      ? OPEN_STRINGS[s]
+      : OPEN_STRINGS[s] + (edState.baseFret - 1) + fretNum;
+    return ((raw % 12) + 12) % 12 === edRootSemitone;
+  }
+
+  function makeHeadBtn(s) {
+    const btn = document.createElement('button');
+    btn.className = 'editor-head-btn';
+    const fret = edState.frets[s];
+    const openIsRoot = fret === 0 && isRoot(s, 0);
+    btn.textContent = fret === -1 ? '×' : fret === 0 ? (openIsRoot ? '◎' : '○') : '　';
+    btn.style.color = fret === -1 ? '#c0392b' : '#1a1a2e';
+    btn.onclick = () => {
+      if (edState.frets[s] === -1) edState.frets[s] = 0;
+      else { edState.frets[s] = -1; edState.fingers[s] = 0; }
+      buildEditorBoard();
+    };
+    return btn;
+  }
+
+  function makeDotCell(s, fretNum) {
+    const cell = document.createElement('div');
+    cell.className = 'editor-cell';
+    const hasDot = edState.frets[s] === fretNum;
+    if (hasDot) {
+      const color = FINGER_COLORS_EDITOR[edState.fingers[s]] || '#888';
+      cell.style.background = color;
+      cell.style.borderRadius = '50%';
+      cell.style.width = '32px';
+      cell.style.height = '32px';
+      cell.style.margin = 'auto';
+      cell.style.border = 'none';
+      cell.textContent = edState.fingers[s] || '';
+      // ルート音のドットは二重丸（白リング）
+      if (isRoot(s, fretNum)) {
+        cell.style.boxShadow = `0 0 0 2px #fff, 0 0 0 4px ${color}`;
+      }
+    }
+    cell.onclick = () => {
+      if (edState.frets[s] === fretNum) {
+        edState.frets[s] = -1;
+        edState.fingers[s] = 0;
+      } else {
+        edState.frets[s] = fretNum;
+        edState.fingers[s] = edState.finger;
+      }
+      buildEditorBoard();
+    };
+    return cell;
+  }
+
+  if (useHorizontal) {
+    wrap.classList.add('horiz');
+    board.style.borderLeft = edState.baseFret === 1 ? '5px solid #1a1a2e' : '2px solid #1a1a2e';
+
+    for (let r = 0; r < 4; r++) heads.appendChild(makeHeadBtn(3 - r));
+
+    for (let r = 0; r < 4; r++) {
+      const s = 3 - r;
+      for (let col = 1; col <= 5; col++) board.appendChild(makeDotCell(s, col));
+    }
+  } else {
+    wrap.classList.remove('horiz');
+    board.style.borderLeft = '';
+
+    for (let s = 0; s < 4; s++) heads.appendChild(makeHeadBtn(s));
+
+    for (let row = 1; row <= 5; row++) {
+      for (let s = 0; s < 4; s++) board.appendChild(makeDotCell(s, row));
+    }
+  }
+}
+
+function saveToLibrary() {
+  const name = document.getElementById('editorName').value.trim() || 'カスタム';
+  const rootNote = document.getElementById('editorRootNote').value;
+  const item = {
+    id: edState.editIdx !== null ? library[edState.editIdx].id : Date.now(),
+    name,
+    frets: [...edState.frets],
+    fingers: [...edState.fingers],
+    baseFret: edState.baseFret,
+    rootNote: rootNote || '',
+    label: name
+  };
+  if (edState.editIdx !== null) {
+    library[edState.editIdx] = item;
+  } else {
+    library.push(item);
+  }
+  saveLibrary();
+  renderLibrary();
+  closeEditor();
+}
+
+// ===== 保存スロット =====
+const SLOT_COUNT = 4;
+const SLOT_KEY = (i) => `tsg-uk-chord-slot-${i}`;
+
+function loadSlotData(i) {
+  try { return JSON.parse(localStorage.getItem(SLOT_KEY(i))); } catch { return null; }
+}
+
+function renderSlots() {
+  const container = document.getElementById('slotRows');
+  container.innerHTML = '';
+  for (let i = 0; i < SLOT_COUNT; i++) {
+    const data = loadSlotData(i);
+    const row = document.createElement('div');
+    row.className = 'slot-row';
+
+    // 番号バッジ
+    const numBadge = document.createElement('span');
+    numBadge.className = 'slot-num' + (data ? ' has-data' : '');
+    numBadge.textContent = i + 1;
+
+    const nameInput = document.createElement('input');
+    nameInput.className = 'slot-name';
+    nameInput.type = 'text';
+    nameInput.placeholder = `スロット ${i + 1}`;
+    nameInput.value = data ? data.name : '';
+
+    const saveBtn = document.createElement('button');
+    saveBtn.className = 'slot-btn save';
+    saveBtn.textContent = '保存する';
+    saveBtn.onclick = () => {
+      if (myChords.length === 0) { alert('コード表が空です。先にコードを追加してください。'); return; }
+      localStorage.setItem(SLOT_KEY(i), JSON.stringify({ name: nameInput.value || `スロット ${i + 1}`, chords: myChords }));
+      alert(`スロット ${i + 1} に保存しました！`);
+      renderSlots();
+    };
+
+    const loadBtn = document.createElement('button');
+    loadBtn.className = 'slot-btn load';
+    loadBtn.textContent = '呼び出す';
+    loadBtn.disabled = !data;
+    loadBtn.onclick = () => {
+      const d = loadSlotData(i);
+      if (!d) return;
+      const clean = sanitizeSheetChords(d.chords).slice(0, MAX_SHEET_CHORDS);
+      if (clean.length === 0) { alert('このスロットのデータが壊れているため呼び出せません。'); return; }
+      if (myChords.length > 0 && !confirm('現在のコード表を上書きしますか？')) return;
+      myChords = clean;
+      saveCurrentSheet();
+      renderSheet();
+      render();
+    };
+
+    const delBtn = document.createElement('button');
+    delBtn.className = 'slot-btn del';
+    delBtn.textContent = '削除';
+    delBtn.disabled = !data;
+    delBtn.onclick = () => {
+      if (!confirm(`スロット ${i + 1} を削除しますか？`)) return;
+      localStorage.removeItem(SLOT_KEY(i));
+      renderSlots();
+    };
+
+    row.appendChild(numBadge);
+    row.appendChild(nameInput);
+    row.appendChild(saveBtn);
+    row.appendChild(loadBtn);
+    row.appendChild(delBtn);
+    container.appendChild(row);
+  }
+}
+
+function exportSlots() {
+  const allSlots = [];
+  for (let i = 0; i < SLOT_COUNT; i++) {
+    allSlots.push(loadSlotData(i));
+  }
+  const json = JSON.stringify(allSlots, null, 2);
+  downloadJSON(json, `tsg-chord-slots-${new Date().toISOString().slice(0,10)}.json`);
+}
+
+function importSlots(event) {
+  const file = event.target.files[0];
+  if (!file) return;
+  const reader = new FileReader();
+  reader.onload = (e) => {
+    try {
+      const allSlots = JSON.parse(e.target.result);
+      if (!Array.isArray(allSlots)) throw new Error();
+      if (!confirm('インポートすると全スロットが上書きされます。よろしいですか？')) return;
+      for (let i = 0; i < SLOT_COUNT; i++) {
+        const slot = allSlots[i];
+        if (slot && Array.isArray(slot.chords)) {
+          const cleanChords = sanitizeSheetChords(slot.chords).slice(0, MAX_SHEET_CHORDS);
+          const name = typeof slot.name === 'string' ? slot.name : `スロット ${i + 1}`;
+          localStorage.setItem(SLOT_KEY(i), JSON.stringify({ name, chords: cleanChords }));
+        } else {
+          localStorage.removeItem(SLOT_KEY(i));
+        }
+      }
+      renderSlots();
+      alert('インポート完了しました！');
+    } catch {
+      alert('ファイルの形式が正しくありません。');
+    }
+  };
+  reader.readAsText(file);
+  event.target.value = '';
+}
+
+// ===== UIセットアップ =====
+function buildButtons() {
+  const rb = document.getElementById("rootBtns");
+  ROOTS.forEach(r => {
+    const btn = document.createElement("button");
+    btn.className = "rbtn";
+    btn.textContent = r;
+    btn.dataset.root = r;
+    btn.onclick = () => { selectedRoot = r; updateActive("rootBtns", r, "root"); render(); };
+    rb.appendChild(btn);
+  });
+
+  const tb = document.getElementById("typeBtns");
+  TYPES.forEach(t => {
+    const btn = document.createElement("button");
+    btn.className = "tbtn";
+    btn.textContent = t.label;
+    btn.dataset.type = t.key;
+    btn.onclick = () => { selectedType = t.key; updateActive("typeBtns", t.key, "type"); render(); };
+    tb.appendChild(btn);
+  });
+
+  const db = document.getElementById("dotDisplayBtns");
+  DOT_DISPLAY_OPTIONS.forEach(opt => {
+    const btn = document.createElement("button");
+    btn.className = "tbtn" + (opt.key === dotDisplay ? " active" : "");
+    btn.textContent = opt.label;
+    btn.dataset.dot = opt.key;
+    btn.onclick = () => {
+      dotDisplay = opt.key;
+      savePrefs();
+      document.querySelectorAll("#dotDisplayBtns button").forEach(b =>
+        b.classList.toggle("active", b.dataset.dot === opt.key)
+      );
+      render();
+      renderSheet();
+      renderLibrary();
+    };
+    db.appendChild(btn);
+  });
+}
+
+function setFlat(val) {
+  useFlat = val;
+  savePrefs();
+  document.getElementById("sharpBtn").classList.toggle("active", !useFlat);
+  document.getElementById("flatBtn").classList.toggle("active", useFlat);
+  document.querySelectorAll("#rootBtns button").forEach(btn => {
+    const r = btn.dataset.root;
+    btn.textContent = (useFlat && FLAT_NAMES[r]) ? FLAT_NAMES[r] : r;
+  });
+  render();
+  renderSheet();
+  renderLibrary();
+}
+
+function setOrientation(horiz) {
+  useHorizontal = horiz;
+  savePrefs();
+  document.getElementById("vertBtn").classList.toggle("active", !useHorizontal);
+  document.getElementById("horizBtn").classList.toggle("active", useHorizontal);
+  document.body.classList.toggle("horiz-mode", useHorizontal);
+  render();
+  renderSheet();
+}
+
+function updateActive(groupId, value, attr) {
+  document.querySelectorAll(`#${groupId} button`).forEach(b => {
+    b.classList.toggle("active", b.dataset[attr] === value);
+  });
+}
+
+// ===== レンダリング =====
+function render() {
+  const area = document.getElementById("diagramsArea");
+  if (!selectedRoot || !selectedType) {
+    area.innerHTML = '<div class="no-chord">ルート音とコードタイプを選んでください</div>';
+    return;
+  }
+
+  const chords = CHORDS[selectedRoot]?.[selectedType];
+  if (!chords || chords.length === 0) {
+    area.innerHTML = '<div class="no-chord">データがありません</div>';
+    return;
+  }
+
+  const typeEntry = TYPES.find(t => t.key === selectedType);
+  const chordLabel = typeEntry?.chordLabel ?? selectedType;
+  const displayRoot = (useFlat && FLAT_NAMES[selectedRoot]) ? FLAT_NAMES[selectedRoot] : selectedRoot;
+  const chordName = displayRoot + chordLabel;
+
+  area.innerHTML = "";
+  chords.forEach((chord, idx) => {
+    const card = document.createElement("div");
+    card.className = "chord-card";
+
+    const nameEl = document.createElement("div");
+    nameEl.className = "chord-name";
+    nameEl.textContent = chordName;
+    card.appendChild(nameEl);
+
+    card.appendChild(useHorizontal ? drawDiagramH(chord, selectedRoot) : drawDiagram(chord, selectedRoot));
+
+    const addRow = document.createElement("div");
+    addRow.className = "add-btn-row";
+
+    const addBtn = document.createElement("button");
+    addBtn.className = "add-btn";
+    addBtn.id = "addBtn";
+    addBtn.textContent = "＋ コード表に追加";
+    addBtn.disabled = myChords.length >= MAX_SHEET_CHORDS;
+    addBtn.onclick = () => addToSheet(selectedRoot, selectedType, chord, chordName);
+    addRow.appendChild(addBtn);
+
+    const hint = document.createElement("span");
+    hint.className = "add-hint";
+    hint.innerHTML = '<kbd>↵ Enter</kbd>';
+    addRow.appendChild(hint);
+
+    // 再生ボタン（addRowに追加）
+    const playBtn = document.createElement("button");
+    playBtn.className = "play-btn";
+    playBtn.id = "chordPlayBtn";
+    playBtn.title = "コードを試聴";
+    playBtn.innerHTML = '▶<span class="play-label">再生</span>';
+    playBtn.onclick = () => {
+      if (playBtn.dataset.playing) {
+        stopChord();
+      } else {
+        playChord(chord);
+      }
+    };
+    addRow.appendChild(playBtn);
+    card.appendChild(addRow);
+
+    area.appendChild(card);
+  });
+}
+
+// ===== マイコード表 =====
+const CURRENT_KEY = 'tsg-uk-chord-current';
+
+function saveCurrentSheet() {
+  localStorage.setItem(CURRENT_KEY, JSON.stringify(myChords));
+}
+
+function addToSheet(root, type, chord, chordName) {
+  if (myChords.length >= MAX_SHEET_CHORDS) return;
+  myChords.push({ root, type, chord, chordName });
+  saveCurrentSheet();
+  renderSheet();
+  render();
+}
+
+function removeFromSheet(idx) {
+  myChords.splice(idx, 1);
+  saveCurrentSheet();
+  renderSheet();
+  render();
+}
+
+function clearSheet() {
+  myChords = [];
+  saveCurrentSheet();
+  renderSheet();
+  render();
+}
+
+// ===== マイコード表の共有（URL / JSON） =====
+
+// UTF-8文字列をBase64url化（iOSでのスタックオーバーフロー回避のためspreadは使わない）
+function b64urlEncode(str) {
+  const bytes = new TextEncoder().encode(str);
+  let binary = '';
+  bytes.forEach(b => { binary += String.fromCharCode(b); });
+  return btoa(binary).replace(/\+/g, '-').replace(/\//g, '_').replace(/=+$/, '');
+}
+
+function b64urlDecode(b64url) {
+  let b64 = b64url.replace(/-/g, '+').replace(/_/g, '/');
+  while (b64.length % 4) b64 += '=';
+  const binary = atob(b64);
+  const bytes = new Uint8Array(binary.length);
+  for (let i = 0; i < binary.length; i++) bytes[i] = binary.charCodeAt(i);
+  return new TextDecoder().decode(bytes);
+}
+
+function buildSheetPayload() {
+  return { t: sheetTitleInput.value, c: myChords };
+}
+
+// ===== インポート/共有データの検証 =====
+// 壊れたデータで描画クラッシュ＆localStorage永続破損が起きるのを防ぐ
+const MAX_SHEET_CHORDS = 16;
+
+function isValidFretArray(a) {
+  // NaN・小数・範囲外（巨大値で描画が壊れる）を弾く
+  return Array.isArray(a) && a.length === 4 && a.every(n => Number.isInteger(n) && n >= -1 && n <= 24);
+}
+// baseFretが欠落・不正でも描画/再生が破綻しないよう1に補正
+function normalizeBaseFret(obj) {
+  if (!Number.isInteger(obj.baseFret) || obj.baseFret < 1 || obj.baseFret > 24) obj.baseFret = 1;
+}
+// マイコード表の要素（chordネスト構造）から有効なものだけ返す
+function sanitizeSheetChords(arr) {
+  if (!Array.isArray(arr)) return [];
+  return arr.filter(item =>
+    item && item.chord && isValidFretArray(item.chord.frets) && isValidFretArray(item.chord.fingers)
+  ).map(item => {
+    normalizeBaseFret(item.chord);
+    if (typeof item.chordName !== 'string') item.chordName = '';
+    return item;
+  });
+}
+// ライブラリの要素（フラット構造）から有効なものだけ返す
+function sanitizeLibraryChords(arr) {
+  if (!Array.isArray(arr)) return [];
+  return arr.filter(item => item && isValidFretArray(item.frets) && isValidFretArray(item.fingers))
+    .map(item => {
+      normalizeBaseFret(item);
+      if (typeof item.name !== 'string') item.name = '';
+      return item;
+    });
+}
+
+// 現在のコード表に payload を反映する（既存データがあれば上書き確認）
+// 戻り値: true=反映 / false=データ不正 / 'cancelled'=ユーザーが上書きを取りやめ
+function applySheetPayload(payload) {
+  if (!payload || !Array.isArray(payload.c)) return false;
+  const clean = sanitizeSheetChords(payload.c).slice(0, MAX_SHEET_CHORDS);
+  if (clean.length === 0) return false; // 有効なコードが1つもなければ不正データ扱い
+  if (myChords.length > 0 && !confirm('現在のコード表を上書きしますか？')) return 'cancelled';
+  myChords = clean;
+  saveCurrentSheet();
+  sheetTitleInput.value = typeof payload.t === 'string' ? payload.t : '';
+  sheetPrintTitle.textContent = sheetTitleInput.value;
+  localStorage.setItem(TITLE_KEY, sheetTitleInput.value);
+  renderSheet();
+  render();
+  return true;
+}
+
+function shareSheetURL() {
+  if (myChords.length === 0) { alert('コード表が空です。先にコードを追加してください。'); return; }
+  const encoded = b64urlEncode(JSON.stringify(buildSheetPayload()));
+  const url = `${location.origin}${location.pathname}#sheet=${encoded}`;
+  document.getElementById('shareUrlInput').value = url;
+  document.getElementById('shareModal').classList.add('open');
+}
+
+function copyShareUrl() {
+  const input = document.getElementById('shareUrlInput');
+  input.select();
+  const btn = document.getElementById('shareCopyBtn');
+  const finish = () => {
+    const orig = '📋 URLをコピー';
+    btn.textContent = '✅ コピーしました';
+    setTimeout(() => { btn.textContent = orig; }, 1500);
+  };
+  if (navigator.clipboard) {
+    navigator.clipboard.writeText(input.value).then(finish).catch(() => document.execCommand('copy') && finish());
+  } else {
+    document.execCommand('copy');
+    finish();
+  }
+}
+
+function exportSheetJSON() {
+  if (myChords.length === 0) { alert('コード表が空です。'); return; }
+  const json = JSON.stringify(buildSheetPayload(), null, 2);
+  downloadJSON(json, `tsg-chord-sheet-${new Date().toISOString().slice(0, 10)}.json`);
+}
+
+function importSheetJSON(event) {
+  const file = event.target.files[0];
+  if (!file) return;
+  const reader = new FileReader();
+  reader.onload = (e) => {
+    try {
+      const payload = JSON.parse(e.target.result);
+      const result = applySheetPayload(payload);
+      if (result === true) alert('コード表を読み込みました！');
+      else if (result === false) alert('ファイルの形式が正しくありません。');
+      // 'cancelled'（上書き取りやめ）は何も表示しない
+    } catch {
+      alert('ファイルの形式が正しくありません。');
+    }
+  };
+  reader.readAsText(file);
+  event.target.value = '';
+}
+
+function printSheet() {
+  if (myChords.length === 0) { alert('コード表が空です。'); return; }
+
+  // 印刷用タイトルをセット
+  const userTitle = document.getElementById('sheetTitleInput').value.trim();
+  document.getElementById('sheetPrintTitle').textContent = userTitle;
+
+  // 印刷日をセット
+  document.getElementById('sheetPrintDate').textContent = new Date().toLocaleDateString('ja-JP', { year: 'numeric', month: 'long', day: 'numeric' });
+
+  // 既存の複製ヘッダーが残っていれば削除
+  document.querySelectorAll('.sheet-print-page-header').forEach(el => el.remove());
+
+  // ページごとに改ページしてヘッダーを複製挿入（コード図の向きに関わらず12個ごと）
+  const chunkSize = 12;
+  const grid = document.getElementById('sheetGrid');
+  const originalBrand = document.querySelector('.sheet-brand-print');
+  const cards = Array.from(grid.children).filter(el => el.classList.contains('sheet-card'));
+  cards.forEach((card, idx) => {
+    if (idx > 0 && idx % chunkSize === 0) {
+      const headerClone = originalBrand.cloneNode(true);
+      headerClone.classList.add('sheet-print-page-header');
+      const dateSpan = headerClone.querySelector('#sheetPrintDate');
+      if (dateSpan) dateSpan.removeAttribute('id');
+      grid.insertBefore(headerClone, card);
+    }
+  });
+
+  // 印刷CSS を強制適用するスタイルを注入
+  const printStyle = document.createElement('style');
+  printStyle.id = 'js-print-style';
+  printStyle.textContent = `
+    @page { margin: 6mm; }
+    @media print {
+      header, .left-col, .tools-section,
+      #slotsSection, #librarySection { display: none !important; }
+      .main-layout { display: block !important; }
+      #sheetSection { margin-top: 0 !important; }
+      .sheet-header, .sheet-actions, #printOverlay { display: none !important; }
+      #sheetJsonIo, #sheetJsonIoHint { display: none !important; }
+      .sheet-brand-print {
+        display: block !important;
+        position: relative !important;
+        text-align: center !important;
+        margin-bottom: 5mm !important;
+        padding: 1mm 0 2.5mm !important;
+        border-bottom: 3px solid #c0392b !important;
+        line-height: 1.2 !important;
+      }
+      /* 2ページ目以降の複製ヘッダーは改ページしてから表示 */
+      .sheet-print-page-header {
+        grid-column: 1 / -1 !important;
+        break-before: page !important;
+        page-break-before: always !important;
+      }
+      .sheet-brand-print-sub {
+        display: block !important;
+        font-family: 'Oswald', sans-serif !important;
+        font-size: 0.7rem !important;
+        font-weight: 600 !important;
+        color: #c0392b !important;
+        letter-spacing: 0.45em !important;
+        text-transform: uppercase !important;
+        margin-bottom: 1.5mm !important;
+      }
+      .sheet-brand-print-main {
+        display: block !important;
+        font-family: 'Oswald', sans-serif !important;
+        font-size: 1.7rem !important;
+        font-weight: 700 !important;
+        color: #1a1a2e !important;
+        letter-spacing: 0.1em !important;
+        text-transform: uppercase !important;
+      }
+      /* 日付は右上に小さく表示（縦幅を取らない） */
+      .sheet-brand-print-date {
+        display: block !important;
+        position: absolute !important;
+        top: 1mm !important;
+        right: 4mm !important;
+        font-family: 'Oswald', sans-serif !important;
+        font-size: 0.7rem !important;
+        font-weight: 500 !important;
+        color: #888 !important;
+        letter-spacing: 0.05em !important;
+        margin: 0 !important;
+      }
+      #sheetPrintTitle { display: block !important; }
+      body { padding: 0 !important; background: #fff !important; }
+
+      /* ウクレレは4弦ぶん図が細いので、ギター版より1列多く入る（横向き図=4列、縦向き図=5列）
+         ※最終的な列数・1ページあたりの個数はフェーズ3で実際に印刷して詰める */
+      .sheet-grid {
+        grid-template-columns: repeat(5, 1fr) !important;
+        gap: 3mm !important;
+      }
+      body.horiz-mode .sheet-grid {
+        grid-template-columns: repeat(4, 1fr) !important;
+      }
+      .sheet-card {
+        width: 100% !important;
+        box-sizing: border-box !important;
+        padding: 3px 5px 4px !important;
+        box-shadow: none !important;
+        border: 1px solid #ddd !important;
+        break-inside: avoid !important;
+        page-break-inside: avoid !important;
+      }
+      .sheet-card svg { width: 84% !important; height: auto !important; }
+      .chord-name { font-size: 1rem !important; margin-bottom: 1px !important; }
+    }
+  `;
+  document.head.appendChild(printStyle);
+
+  // オーバーレイを表示（ユーザーが自分でタップ → Android でも動作する）
+  const overlay = document.createElement('div');
+  overlay.id = 'printOverlay';
+  overlay.style.cssText = 'position:fixed;inset:0;background:rgba(0,0,0,0.88);z-index:9999;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:20px;';
+  overlay.innerHTML = `
+    <div style="color:#fff;font-size:1rem;font-weight:600;text-align:center;line-height:1.8;">
+      コード表の印刷準備ができました<br>
+      <span style="font-size:0.82rem;opacity:0.6;">下のボタンをタップしてください</span>
+    </div>
+    <button id="printExecBtn" style="padding:16px 48px;background:#c0392b;color:#fff;border:none;border-radius:12px;font-size:1.2rem;font-weight:700;cursor:pointer;-webkit-tap-highlight-color:transparent;">
+      🖨 印刷する
+    </button>
+    <button id="printCancelBtn" style="padding:10px 28px;background:transparent;color:#aaa;border:1px solid #555;border-radius:8px;font-size:0.9rem;cursor:pointer;-webkit-tap-highlight-color:transparent;">
+      キャンセル
+    </button>
+  `;
+  document.body.appendChild(overlay);
+
+  const cleanup = () => {
+    overlay.remove();
+    printStyle.remove();
+    document.querySelectorAll('.sheet-print-page-header').forEach(el => el.remove());
+    window.removeEventListener('afterprint', cleanup);
+  };
+
+  document.getElementById('printExecBtn').addEventListener('click', () => {
+    window.addEventListener('afterprint', cleanup);
+    window.print();
+  });
+
+  document.getElementById('printCancelBtn').addEventListener('click', cleanup);
+}
+
+function renderSheet() {
+  const grid = document.getElementById("sheetGrid");
+  const count = document.getElementById("sheetCount");
+  count.textContent = `${myChords.length} / ${MAX_SHEET_CHORDS}`;
+
+  if (myChords.length === 0) {
+    grid.innerHTML = '<div class="sheet-empty">コードを選んで「コード表に追加」を押してください（最大16個）</div>';
+    return;
+  }
+
+  let dragSrcIdx = null;
+
+  grid.innerHTML = "";
+  myChords.forEach((item, idx) => {
+    const card = document.createElement("div");
+    card.className = "sheet-card compact";
+    card.draggable = true;
+
+    // ドラッグ開始
+    card.addEventListener("dragstart", (e) => {
+      dragSrcIdx = idx;
+      card.classList.add("dragging");
+      e.dataTransfer.effectAllowed = "move";
+    });
+    card.addEventListener("dragend", () => {
+      card.classList.remove("dragging");
+      grid.querySelectorAll(".sheet-card").forEach(c => c.classList.remove("drag-over"));
+    });
+
+    // ドロップ先
+    card.addEventListener("dragover", (e) => {
+      e.preventDefault();
+      e.dataTransfer.dropEffect = "move";
+      grid.querySelectorAll(".sheet-card").forEach(c => c.classList.remove("drag-over"));
+      card.classList.add("drag-over");
+    });
+    card.addEventListener("dragleave", () => card.classList.remove("drag-over"));
+    card.addEventListener("drop", (e) => {
+      e.preventDefault();
+      if (dragSrcIdx === null || dragSrcIdx === idx) return;
+      const moved = myChords.splice(dragSrcIdx, 1)[0];
+      myChords.splice(idx, 0, moved);
+      dragSrcIdx = null;
+      saveCurrentSheet();
+      renderSheet();
+    });
+
+    const removeBtn = document.createElement("button");
+    removeBtn.className = "sheet-card-remove";
+    removeBtn.textContent = "✕";
+    removeBtn.onclick = () => removeFromSheet(idx);
+    card.appendChild(removeBtn);
+
+    const nameEl = document.createElement("div");
+    nameEl.className = "chord-name";
+    nameEl.textContent = item.chordName;
+    card.appendChild(nameEl);
+
+    if (item.chord.baseFret > 1) {
+      const posEl = document.createElement("div");
+      posEl.className = "chord-position";
+      posEl.textContent = `${item.chord.baseFret}fr`;
+      card.appendChild(posEl);
+    }
+
+    card.appendChild(useHorizontal ? drawDiagramH(item.chord, item.root, true) : drawDiagram(item.chord, item.root, true));
+    grid.appendChild(card);
+  });
+}
+
+function drawDiagram(chord, rootNote, compact = false) {
+  const rootSemitone = rootNote != null ? ROOT_SEMITONES[rootNote] : null;
+  const NUM_STRINGS = 4;
+  const NUM_FRETS = Math.max(4, ...chord.frets.filter(f => f > 0));
+  const STRING_SPACING = compact ? 24 : 32;
+  const FRET_SPACING = compact ? 27 : 36;
+  const MARGIN_LEFT = compact ? 27 : 36;
+  const MARGIN_TOP = compact ? 30 : 40;
+  const DOT_R = compact ? 9 : 12;
+
+  const svgW = MARGIN_LEFT + STRING_SPACING * (NUM_STRINGS - 1) + 30;
+  const svgH = MARGIN_TOP + FRET_SPACING * NUM_FRETS + 20;
+
+  const svg = document.createElementNS("http://www.w3.org/2000/svg", "svg");
+  svg.setAttribute("width", svgW);
+  svg.setAttribute("height", svgH);
+  svg.setAttribute("viewBox", `0 0 ${svgW} ${svgH}`);
+  svg.style.display = "block";
+
+  const frets = chord.frets;      // [4弦〜1弦]
+  const fingers = chord.fingers;
+  const baseFret = chord.baseFret;
+
+  // ナット（1フレット目のみ太線）
+  if (baseFret === 1) {
+    const nut = makeLine(
+      MARGIN_LEFT, MARGIN_TOP,
+      MARGIN_LEFT + STRING_SPACING * (NUM_STRINGS - 1), MARGIN_TOP,
+      "#1a1a2e", 5
+    );
+    svg.appendChild(nut);
+  }
+
+  // フレット線
+  for (let f = 0; f <= NUM_FRETS; f++) {
+    const y = MARGIN_TOP + f * FRET_SPACING;
+    svg.appendChild(makeLine(MARGIN_LEFT, y, MARGIN_LEFT + STRING_SPACING * (NUM_STRINGS - 1), y, "#ccc", 1));
+  }
+
+  // 弦（縦線）
+  for (let s = 0; s < NUM_STRINGS; s++) {
+    const x = MARGIN_LEFT + s * STRING_SPACING;
+    svg.appendChild(makeLine(x, MARGIN_TOP, x, MARGIN_TOP + FRET_SPACING * NUM_FRETS, "#999", 1.5));
+  }
+
+  // ベースフレット番号（2フレット以上）
+  if (baseFret > 1) {
+    const frFontSize = compact ? "0.55rem" : "0.72rem";
+    const frX = compact ? MARGIN_LEFT - 21 : MARGIN_LEFT - 28;
+    const t = makeText(baseFret + "fr", frX, MARGIN_TOP + FRET_SPACING * 0.65, "#888", frFontSize);
+    svg.appendChild(t);
+  }
+
+  const symbolY = compact ? MARGIN_TOP - 15 : MARGIN_TOP - 20;
+  const openR   = compact ? 7 : 9;
+  const openR2  = compact ? 11 : 14;
+  const fingerFontSize = compact ? "0.58rem" : "0.75rem";
+  const fingerYOffset  = compact ? 3.5 : 4.5;
+
+  // 弦ごとの記号
+  frets.forEach((fret, i) => {
+    const x = MARGIN_LEFT + i * STRING_SPACING;
+
+    const actualPitch = fret === 0 ? OPEN_STRINGS[i] : (OPEN_STRINGS[i] + baseFret - 1 + fret);
+    const isRoot = rootSemitone != null && fret !== -1 && (actualPitch % 12) === rootSemitone;
+
+    if (fret === -1) {
+      // ミュート ×
+      svg.appendChild(makeX(x, symbolY, "#999"));
+    } else if (fret === 0) {
+      // 開放弦 ○
+      svg.appendChild(makeCircleOpen(x, symbolY, openR, "#555"));
+      if (isRoot) svg.appendChild(makeCircleOpen(x, symbolY, openR2, "#555"));
+    } else {
+      // 押弦ドット
+      const y = MARGIN_TOP + (fret - 0.5) * FRET_SPACING;
+      const finger = fingers[i];
+      const color = FINGER_COLORS[finger] || "#ccc";
+      if (isRoot) svg.appendChild(makeCircleFill(x, y, DOT_R + (compact ? 4 : 6), color));
+      if (isRoot) svg.appendChild(makeCircleFill(x, y, DOT_R + (compact ? 2 : 3), "#fff"));
+      svg.appendChild(makeCircleFill(x, y, DOT_R, color));
+      const label = getDotLabel(i, fret, baseFret, finger, rootSemitone);
+      if (label) {
+        const fs = dotDisplay === 'finger' ? fingerFontSize : (compact ? '0.5rem' : '0.62rem');
+        svg.appendChild(makeText(label, x, y + fingerYOffset, "#fff", fs, true));
+      }
+    }
+  });
+
+  return svg;
+}
+
+// ===== 横向きダイアグラム（Step2: グリッドのみ） =====
+function drawDiagramH(chord, rootNote, compact = false) {
+  const NUM_STRINGS = 4;
+  const NUM_FRETS = Math.max(4, ...chord.frets.filter(f => f > 0));
+  const STRING_SPACING = compact ? 24 : 32; // 弦と弦の間隔（縦方向）
+  const FRET_SPACING   = compact ? 27 : 36; // フレットとフレットの間隔（横方向）
+  const MARGIN_LEFT  = compact ? 30 : 40;  // 左マージン（×○記号用スペース）
+  const MARGIN_TOP   = compact ? 14 : 18;  // 上マージン（常に一定）
+  // 4弦G（最下段）の1フレット目にドットがあると、その真下のfrラベルがドットに隠れるため
+  // その場合だけ下マージンを広げてラベルをドットの下に逃がす（ルート二重丸の最大半径ぶん）
+  const frClear = chord.baseFret > 1 && chord.frets[0] === 1 ? (compact ? 12 : 15) : 0;
+  const MARGIN_BOTTOM = (compact ? 20 : 26) + frClear; // 下マージン（frラベル用スペースを確保）
+  const DOT_R = compact ? 9 : 12;
+
+  // svgサイズ: 横=左マージン+フレット幅, 縦=上マージン+弦間隔×5+下マージン
+  const svgW = MARGIN_LEFT + FRET_SPACING * NUM_FRETS + 20;
+  const svgH = MARGIN_TOP  + STRING_SPACING * (NUM_STRINGS - 1) + MARGIN_BOTTOM;
+
+  const svg = document.createElementNS("http://www.w3.org/2000/svg", "svg");
+  svg.setAttribute("width", svgW);
+  svg.setAttribute("height", svgH);
+  svg.setAttribute("viewBox", `0 0 ${svgW} ${svgH}`);
+  svg.style.display = "block";
+
+  const baseFret = chord.baseFret;
+
+  // ナット（1fr時のみ左端に太い縦線）
+  if (baseFret === 1) {
+    svg.appendChild(makeLine(
+      MARGIN_LEFT, MARGIN_TOP,
+      MARGIN_LEFT, MARGIN_TOP + STRING_SPACING * (NUM_STRINGS - 1),
+      "#1a1a2e", 5
+    ));
+  }
+
+  // フレット線（縦線）
+  for (let f = 0; f <= NUM_FRETS; f++) {
+    const x = MARGIN_LEFT + f * FRET_SPACING;
+    svg.appendChild(makeLine(x, MARGIN_TOP, x, MARGIN_TOP + STRING_SPACING * (NUM_STRINGS - 1), "#ccc", 1));
+  }
+
+  // 弦（横線）: index0=4弦G=下, index3=1弦A=上
+  for (let s = 0; s < NUM_STRINGS; s++) {
+    const y = MARGIN_TOP + s * STRING_SPACING;
+    svg.appendChild(makeLine(MARGIN_LEFT, y, MARGIN_LEFT + FRET_SPACING * NUM_FRETS, y, "#999", 1.5));
+  }
+
+  const frets   = chord.frets;
+  const fingers = chord.fingers;
+
+  // ベースフレット番号（2fr以上はグリッド下・1フレット目の列の真下に表示）
+  if (baseFret > 1) {
+    const frFontSize = compact ? "0.55rem" : "0.72rem";
+    const frY = MARGIN_TOP + STRING_SPACING * (NUM_STRINGS - 1) + (compact ? 13 : 17) + frClear;
+    svg.appendChild(makeText(baseFret + "fr", MARGIN_LEFT + FRET_SPACING * 0.5, frY, "#888", frFontSize));
+  }
+
+  // 記号（×ミュート・○開放弦）を左側に縦並びで配置
+  const symbolX = compact ? MARGIN_LEFT - 15 : MARGIN_LEFT - 20;
+  const openR   = compact ? 7 : 9;
+
+  const rootSemitone   = rootNote != null ? ROOT_SEMITONES[rootNote] : null;
+  const openR2         = compact ? 11 : 14;
+  const fingerFontSize = compact ? "0.58rem" : "0.75rem";
+  const fingerYOffset  = compact ? 3.5 : 4.5;
+
+  frets.forEach((fret, i) => {
+    // 1弦A(i=3)が上、4弦G(i=0)が下
+    const y = MARGIN_TOP + (NUM_STRINGS - 1 - i) * STRING_SPACING;
+    const actualPitch = fret === 0 ? OPEN_STRINGS[i] : (OPEN_STRINGS[i] + baseFret - 1 + fret);
+    const isRoot = rootSemitone != null && fret !== -1 && (actualPitch % 12) === rootSemitone;
+
+    if (fret === -1) {
+      svg.appendChild(makeX(symbolX, y, "#999"));
+    } else if (fret === 0) {
+      svg.appendChild(makeCircleOpen(symbolX, y, openR, "#555"));
+      if (isRoot) svg.appendChild(makeCircleOpen(symbolX, y, openR2, "#555"));
+    } else {
+      // 押弦ドット
+      const x = MARGIN_LEFT + (fret - 0.5) * FRET_SPACING;
+      const finger = fingers[i];
+      const color = FINGER_COLORS[finger] || "#ccc";
+      if (isRoot) svg.appendChild(makeCircleFill(x, y, DOT_R + (compact ? 4 : 6), color));
+      if (isRoot) svg.appendChild(makeCircleFill(x, y, DOT_R + (compact ? 2 : 3), "#fff"));
+      svg.appendChild(makeCircleFill(x, y, DOT_R, color));
+      const label = getDotLabel(i, fret, baseFret, finger, rootSemitone);
+      if (label) {
+        const fs = dotDisplay === 'finger' ? fingerFontSize : (compact ? '0.5rem' : '0.62rem');
+        svg.appendChild(makeText(label, x, y + fingerYOffset, "#fff", fs, true));
+      }
+    }
+  });
+
+  return svg;
+}
+
+function makeLine(x1, y1, x2, y2, stroke, sw) {
+  const l = document.createElementNS("http://www.w3.org/2000/svg", "line");
+  l.setAttribute("x1", x1); l.setAttribute("y1", y1);
+  l.setAttribute("x2", x2); l.setAttribute("y2", y2);
+  l.setAttribute("stroke", stroke);
+  l.setAttribute("stroke-width", sw);
+  return l;
+}
+
+function makeCircleFill(cx, cy, r, fill) {
+  const c = document.createElementNS("http://www.w3.org/2000/svg", "circle");
+  c.setAttribute("cx", cx); c.setAttribute("cy", cy); c.setAttribute("r", r);
+  c.setAttribute("fill", fill);
+  return c;
+}
+
+function makeCircleOpen(cx, cy, r, stroke) {
+  const c = document.createElementNS("http://www.w3.org/2000/svg", "circle");
+  c.setAttribute("cx", cx); c.setAttribute("cy", cy); c.setAttribute("r", r);
+  c.setAttribute("fill", "none");
+  c.setAttribute("stroke", stroke);
+  c.setAttribute("stroke-width", 2);
+  return c;
+}
+
+function makeX(cx, cy, color) {
+  const g = document.createElementNS("http://www.w3.org/2000/svg", "g");
+  const d = 7;
+  [[-d,-d,d,d],[d,-d,-d,d]].forEach(([x1,y1,x2,y2]) => {
+    g.appendChild(makeLine(cx+x1, cy+y1, cx+x2, cy+y2, color, 2));
+  });
+  return g;
+}
+
+function makeText(str, x, y, fill, fontSize, bold = false) {
+  const t = document.createElementNS("http://www.w3.org/2000/svg", "text");
+  t.setAttribute("x", x); t.setAttribute("y", y);
+  t.setAttribute("fill", fill);
+  t.setAttribute("font-size", fontSize);
+  t.setAttribute("text-anchor", "middle");
+  if (bold) t.setAttribute("font-weight", "bold");
+  t.textContent = str;
+  return t;
+}
+
+buildButtons();
+
+// 初期状態：横向き・シャープモード
+document.body.classList.add("horiz-mode");
+
+// 初期表示：Cメジャー
+selectedRoot = "C";
+selectedType = "major";
+// 前回のコード表を自動復元（壊れたデータが残っていても起動できるよう検証を通す）
+try {
+  const saved = localStorage.getItem(CURRENT_KEY);
+  if (saved) myChords = sanitizeSheetChords(JSON.parse(saved)).slice(0, MAX_SHEET_CHORDS);
+} catch { myChords = []; }
+
+// タイトル入力の初期化
+const sheetTitleInput = document.getElementById('sheetTitleInput');
+const sheetPrintTitle = document.getElementById('sheetPrintTitle');
+const TITLE_KEY = 'tsg-uk-chord-title';
+
+// 保存済みタイトルを復元
+const savedTitle = localStorage.getItem(TITLE_KEY) || '';
+sheetTitleInput.value = savedTitle;
+sheetPrintTitle.textContent = savedTitle;
+
+// 入力するたびに印刷用divとlocalStorageを更新
+sheetTitleInput.addEventListener('input', () => {
+  const t = sheetTitleInput.value;
+  sheetPrintTitle.textContent = t;
+  localStorage.setItem(TITLE_KEY, t);
+});
+
+// URL共有（#sheet=...）から開かれた場合は読み込んで反映
+(function loadSheetFromHash() {
+  const m = location.hash.match(/^#sheet=(.+)$/);
+  if (!m) return;
+  try {
+    const payload = JSON.parse(b64urlDecode(m[1]));
+    if (applySheetPayload(payload) === false) alert('共有URLのデータが壊れているため読み込めませんでした。');
+  } catch {
+    alert('共有URLの読み込みに失敗しました。');
+  }
+  history.replaceState(null, '', location.pathname + location.search);
+})();
+
+// 保存済み設定をUIに反映（ボタン状態・bodyクラス）
+document.getElementById("sharpBtn").classList.toggle("active", !useFlat);
+document.getElementById("flatBtn").classList.toggle("active", useFlat);
+document.getElementById("horizBtn").classList.toggle("active", useHorizontal);
+document.getElementById("vertBtn").classList.toggle("active", !useHorizontal);
+document.body.classList.toggle("horiz-mode", useHorizontal);
+
+updateActive("rootBtns", "C", "root");
+updateActive("typeBtns", "major", "type");
+
+// ♭モード復元時はルート音ボタンのラベルを更新
+if (useFlat) {
+  document.querySelectorAll("#rootBtns button").forEach(btn => {
+    const r = btn.dataset.root;
+    if (r && FLAT_NAMES[r]) btn.textContent = FLAT_NAMES[r];
+  });
+}
+
+render();
+renderSheet();
+renderSlots();
+renderLibrary();
+buildLibraryPresetSelect();
+
+// キーボードショートカット
+document.addEventListener("keydown", (e) => {
+  const inField = ['INPUT','SELECT','TEXTAREA'].includes(e.target.tagName);
+
+  // エディター開放中: 1〜4 で指番号切替
+  if (document.getElementById("customModal").classList.contains("open")) {
+    // コード名入力欄にフォーカスがある時だけスキップ、それ以外は常に有効
+    const isInNameInput = document.activeElement?.id === 'editorName';
+    if (!isInNameInput && ['1','2','3','4'].includes(e.key)) {
+      e.preventDefault();
+      edState.finger = parseInt(e.key);
+      buildEditorFingers();
+    }
+    return;
+  }
+
+  // Enterキーでコード表に追加
+  if (e.key !== "Enter") return;
+  if (document.getElementById("helpModal").classList.contains("open")) return;
+  if (document.getElementById("presetSaveModal").classList.contains("open")) return;
+  if (inField) return;
+  const btn = document.getElementById("addBtn");
+  if (btn && !btn.disabled) btn.click();
+});
+</script>
+<footer style="text-align:center; padding:14px 16px 22px; font-size:0.68rem; line-height:1.6; color:#9aa0ac;">
+  © 2026 ギタースクールTSG（杉山つよし）&nbsp;All Rights Reserved.<br>
+  無断複製・転載を禁じます。
+</footer>
+</body>
+</html>
