@@ -1339,6 +1339,74 @@
 }
 @media(prefers-reduced-motion:reduce){button{transition:none!important}}
 </style>
+<style id="tsg-ukulele-theme" data-release="2026-11-02-green">
+/* Ukulele identity: screen colors only; preserve layout, finger colors and printing. */
+@media screen {
+ :root { --uk-ink:#244536;--uk-accent:#23764f;--uk-soft:#eff6f1;--uk-line:#dce8df; }
+ body { background:#edf4ef;color:#293e33; }
+ header { background:linear-gradient(112deg,#12372c,#245441 60%,#173e30);box-shadow:0 4px 20px #163c2916; }
+ .brand-right { border-bottom-color:#9fcfae; }
+ .brand-sub1 { color:#b9dfc4; }
+ .brand-main svg circle { fill:#1d4938; }
+ .help-btn { background:#356e51; }
+ .help-btn:hover { background:#40805e; }
+ .controls,.chord-card,.sheet-card,.slots-section,.library-section { box-shadow:0 8px 24px #204d350b,0 2px 5px #204d3505,0 0 0 1px var(--uk-line); }
+ .chord-card { background:linear-gradient(#24513e 0 54px,#fff 54px); }
+ .sheet-card,.sheet-card.compact { background:linear-gradient(var(--uk-soft) 0 40px,#fff 40px); }
+ .sheet-card .chord-name,.sheet-title,.library-card-name,.modal h2 { color:var(--uk-ink); }
+ .ctrl-label,.finger-legend,.slots-title { color:#506a5b; }
+ .ctrl-row.group-sep,.slots-io { border-color:#e2ebe4; }
+ .rbtn:not(.active),.tbtn:not(.active) { color:#425c4b;background:#f0f5f1;border-color:#e3ebe5; }
+ .rbtn:not(.active):hover,.tbtn:not(.active):hover { color:#254c37;background:#e4efe7;border-color:#c5dacb; }
+ .rbtn.active { background:linear-gradient(#277953,#1c6243);border-color:#1c6243;box-shadow:0 3px 8px #23764f26; }
+ .tbtn.active { background:linear-gradient(#407c70,#316557);border-color:#316557;box-shadow:0 3px 8px #31655724; }
+ .acc-toggle { color:#326856;border-color:#79a08b; }
+ .acc-toggle.active,.orient-toggle.active { color:#fff;background:#356e51;border-color:#356e51; }
+ .orient-toggle:hover { background:var(--uk-soft); }
+ .orient-toggle.active:hover { background:#2a5b42; }
+ .add-btn,.library-new-btn { background:linear-gradient(#2b8258,#206942);box-shadow:0 4px 10px #20694220,inset 0 1px 0 #ffffff20; }
+ .add-btn:hover,.library-new-btn:hover { background:#1e6240; }
+ .play-btn { color:var(--uk-accent);border-color:var(--uk-accent); }
+ .play-btn:hover { color:#fff;background:var(--uk-accent); }
+ .sheet-title-block { border-left-color:#468b60; }
+ .sheet-title-en { color:#33794f; }
+ .sheet-count { color:#476953;background:#dfece2; }
+ .sheet-title-input { color:#375642;background:#f8fbf8;border-color:#cfdfd3; }
+ .sheet-title-input:focus,.slot-name:focus,.editor-name-input:focus,.preset-save-input:focus { border-color:var(--uk-accent);box-shadow:0 0 0 3px #23764f18; }
+ button:focus-visible,a:focus-visible,input:focus-visible,select:focus-visible,label[role=button]:focus-visible,[role=button]:focus-visible { outline-color:var(--uk-accent); }
+ .print-btn { background:linear-gradient(#345d45,#254832);box-shadow:0 4px 10px #2445361f; }
+ .print-btn:hover { background:#21432f; }
+ .share-btn { background:#356e51; }
+ .share-btn:hover { background:#2b5d43; }
+ .sheet-actions .share-btn { color:#326c4b;background:#f7fbf8;border-color:#b5d0be;box-shadow:0 2px 4px #204d3506; }
+ .sheet-actions .share-btn:hover { background:#e8f3eb; }
+ .slots-section { background:linear-gradient(var(--uk-soft) 0 46px,#fff 46px); }
+ .library-section { background:linear-gradient(var(--uk-soft) 0 50px,#fff 50px); }
+ .slots-title .appearance-icon { color:#688d72; }
+ .slot-name { color:#3c5b47;background:#f7faf7;border-color:#dce7de; }
+ .slot-name::placeholder { color:#607566; }
+ .slot-btn.save,.editor-save-btn { color:#fff;background:#3a6149; }
+ .slot-btn.save:hover,.editor-save-btn:hover { background:#2e503a; }
+ .slot-btn.load { color:#356b4b;background:#e6f1e9; }
+ .slot-btn.load:hover { background:#d7e9dd; }
+ .slot-btn:disabled { color:#95a699;background:#f0f4f1; }
+ .slot-num { color:#718774;background:#e3ece5; }
+ .slot-num.has-data { color:#356b4b;background:#dfefe4; }
+ .slot-io-btn,.sheet-preset-row select,.sheet-preset-row > button { color:#506d59;background:#f8fbf8;border-color:#d7e5db; }
+ .slot-io-btn:hover,.sheet-preset-row > button:hover { background:#eaf3ed; }
+ .slots-io-hint,.library-empty,.sheet-empty { color:#607566; }
+ .library-card { background:#f3f8f4;border-color:#dde9e0; }
+ .library-card-btn.add,.preset-save-btn { background:var(--uk-accent); }
+ .library-card-btn.add:hover,.preset-save-btn:hover { background:#1e6240; }
+ .library-card-btn.dupe { color:#326c4b;background:#e8f3eb; }
+ .library-card-btn.dupe:hover { background:#d7e9dd; }
+ .preset-save-item:hover { background:#edf6ef;border-color:var(--uk-accent); }
+ .preset-save-item-count,.help-section h3 { color:var(--uk-accent); }
+ .help-badge.root { background:#23764f; }
+ .help-badge.type { background:#356e60; }
+ #printExecBtn { background:var(--uk-accent)!important; }
+}
+</style>
 </head>
 <body>
 
